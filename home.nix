@@ -23,6 +23,7 @@
     pkgs.rustc
     pkgs.cargo
     pkgs.clang
+    pkgs.spotify
   ];
 
   programs.ssh = {
