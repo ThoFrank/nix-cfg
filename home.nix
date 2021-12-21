@@ -1,10 +1,11 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
-{
+let machine = import ./machine.nix;
+in {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = "thomas";
-  home.homeDirectory = "/home/thomas";
+  home.username = machine.username;
+  home.homeDirectory = machine.homedir;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -23,6 +24,9 @@
     pkgs.rustc
     pkgs.cargo
     pkgs.clang
+  ]
+  ++ lib.optional (machine.operatingSystem != "Darwin")
+  [
     pkgs.spotify
   ];
 
