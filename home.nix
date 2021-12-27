@@ -24,10 +24,18 @@ in {
     pkgs.rustc
     pkgs.cargo
     pkgs.clang
+    pkgs.tmux
+    pkgs.thefuck
+    pkgs.htop
   ]
-  ++ lib.optional (machine.operatingSystem != "Darwin")
+  ++ lib.optionals (machine.operatingSystem != "Darwin")
   [
+    # linux only
     pkgs.spotify
+  ]
+  ++ lib.optionals (machine.operatingSystem == "Darwin") [
+    # darwin only
+    pkgs.mas
   ];
 
   programs.ssh = {
@@ -52,6 +60,8 @@ in {
       jnoortheen.nix-ide
       justusadam.language-haskell
       matklad.rust-analyzer
+      ms-azuretools.vscode-docker
+      ms-ceintl.vscode-language-pack-de
     ];
     userSettings = {
       "security.workspace.trust.enabled" = false;
