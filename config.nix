@@ -1,3 +1,4 @@
 {
   allowUnfree = true;
+  sandbox = true;
 }

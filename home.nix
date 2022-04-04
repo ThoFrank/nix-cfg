@@ -21,12 +21,12 @@ in {
   programs.home-manager.enable = true;
 
   home.packages = [
-    pkgs.rustc
-    pkgs.cargo
-    pkgs.clang
+    pkgs.rustup
     pkgs.tmux
     pkgs.thefuck
     pkgs.htop
+    pkgs.nixpkgs-review
+    pkgs.python3
   ]
   ++ lib.optionals (machine.operatingSystem != "Darwin")
   [
@@ -36,6 +36,7 @@ in {
   ++ lib.optionals (machine.operatingSystem == "Darwin") [
     # darwin only
     pkgs.mas
+    pkgs.libiconv
   ];
 
   programs.ssh = {
@@ -45,6 +46,18 @@ in {
         hostname = "github.com";
         user = "git";
         identityFile  = "~/.ssh/github";
+      };
+      "freenas" = {
+        hostname = "frankcloud.firewall-gateway.com";
+        user = "root";
+        port = 5522;
+        identityFile = "~/.ssh/id_rsa_NAS";
+      };
+      "fewo" = {
+        hostname = "krimmlmonster.selfhost.eu";
+        user = "pi";
+        identityFile = "~/.ssh/nexus_id_rsa";
+        port = 4445;
       };
     };
   };
@@ -61,10 +74,46 @@ in {
       justusadam.language-haskell
       matklad.rust-analyzer
       ms-azuretools.vscode-docker
-      ms-ceintl.vscode-language-pack-de
     ];
     userSettings = {
       "security.workspace.trust.enabled" = false;
     };
+  };
+  programs.zsh = {
+    enable = true;
+    oh-my-zsh = {
+      enable = true;
+  	  plugins = [
+        "git"
+        "python"
+        "rust"
+        "man"
+        "thefuck"
+        "fd"
+        "ripgrep"
+      ];
+  	  theme = "robbyrussell";
+    };
+  };
+
+  home.activation = {
+    copyApplications = let
+      apps = pkgs.buildEnv {
+        name = "home-manager-applications";
+        paths = config.home.packages;
+        pathsToLink = "/Applications";
+      };
+    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+      baseDir="$HOME/Applications/Home Manager Apps"
+      if [ -d "$baseDir" ]; then
+        rm -rf "$baseDir"
+      fi
+      mkdir -p "$baseDir"
+      for appFile in ${apps}/Applications/*; do
+        target="$baseDir/$(basename "$appFile")"
+        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+      done
+    '';
   };
 }
