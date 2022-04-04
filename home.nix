@@ -95,7 +95,7 @@ in {
   	  theme = "robbyrussell";
     };
   };
-
+  
   home.activation = {
     copyApplications = let
       apps = pkgs.buildEnv {
@@ -103,7 +103,8 @@ in {
         paths = config.home.packages;
         pathsToLink = "/Applications";
       };
-    in lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+    in if pkgs.stdenv.isDarwin
+    then lib.hm.dag.entryAfter [ "writeBoundary" ] ''
       baseDir="$HOME/Applications/Home Manager Apps"
       if [ -d "$baseDir" ]; then
         rm -rf "$baseDir"
@@ -114,6 +115,8 @@ in {
         $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
         $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
       done
-    '';
+    ''
+    else
+    "";
   };
 }

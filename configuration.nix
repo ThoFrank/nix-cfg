@@ -8,7 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      #<home-manager/nixos>
+      <home-manager/nixos>
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -118,12 +118,10 @@
 
 
   ### ADDED BY ME
+  nixpkgs.config.allowUnfree = true;
+  home-manager.users.thomas = import ./home.nix;
+  home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
-  programs.zsh.ohMyZsh = {
-  	enable = true;
-  	plugins = [ "git" "python" "man" ];
-  	theme = "agnoster";
-  };
   virtualisation.virtualbox.host.enable = true;
   users.extraGroups.vboxusers.members = [ "thomas" ];
 }

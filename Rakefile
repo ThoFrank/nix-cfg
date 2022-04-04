@@ -16,5 +16,8 @@ task mac: [:common] do
 end
 
 task nixos: [:common] do
-    # todo
+    sh "rm hardware-configuration.nix"
+    sh "ln -s /etc/nixos/hardware-configuration.nix $(pwd)/hardware-configuration.nix"
+    sh "sudo rm /etc/nixos/configuration.nix"
+    sh "sudo ln -s $(pwd)/configuration.nix /etc/nixos/configuration.nix"
 end
