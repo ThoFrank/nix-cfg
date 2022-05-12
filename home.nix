@@ -59,6 +59,11 @@ in {
         identityFile = "~/.ssh/nexus_id_rsa";
         port = 4445;
       };
+      "backuppi" = {
+        hostname = "10.0.0.137";
+        user = "ubuntu";
+        identityFile = "~/.ssh/id_rsa_backup_pi";
+      };
     };
   };
   programs.git = {
@@ -77,6 +82,8 @@ in {
     ];
     userSettings = {
       "security.workspace.trust.enabled" = false;
+      "update.mode" = "none";
+      "terminal.integrated.persistentSessionReviveProcess" = "never";
     };
   };
   programs.zsh = {
