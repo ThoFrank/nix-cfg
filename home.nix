@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
 
 let machine = import ./machine.nix;
-in {
+in
+{
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = machine.username;
@@ -27,12 +28,17 @@ in {
     pkgs.htop
     pkgs.nixpkgs-review
     pkgs.python3
+    pkgs.fd
+    pkgs.ripgrep
+    pkgs.libreoffice
+    pkgs.just
   ]
   ++ lib.optionals (machine.operatingSystem != "Darwin")
-  [
-    # linux only
-    pkgs.spotify
-  ]
+    [
+      # linux only
+      pkgs.spotify
+      pkgs.minecraft
+    ]
   ++ lib.optionals (machine.operatingSystem == "Darwin") [
     # darwin only
     pkgs.mas
@@ -45,7 +51,7 @@ in {
       "github.com" = {
         hostname = "github.com";
         user = "git";
-        identityFile  = "~/.ssh/github";
+        identityFile = "~/.ssh/github";
       };
       "freenas" = {
         hostname = "frankcloud.firewall-gateway.com";
@@ -64,6 +70,12 @@ in {
         user = "ubuntu";
         identityFile = "~/.ssh/id_rsa_backup_pi";
       };
+      "nixpi" = {
+        hostname = "192.168.1.118";
+        user = "pi";
+        identityFile = "~/.ssh/id_pi";
+        port = 22;
+      };
     };
   };
   programs.git = {
@@ -79,6 +91,7 @@ in {
       justusadam.language-haskell
       matklad.rust-analyzer
       ms-azuretools.vscode-docker
+      ms-vscode-remote.remote-ssh
     ];
     userSettings = {
       "security.workspace.trust.enabled" = false;
@@ -90,7 +103,7 @@ in {
     enable = true;
     oh-my-zsh = {
       enable = true;
-  	  plugins = [
+      plugins = [
         "git"
         "python"
         "rust"
@@ -99,31 +112,55 @@ in {
         "fd"
         "ripgrep"
       ];
-  	  theme = "robbyrussell";
+      theme = "robbyrussell";
     };
   };
-  
-  home.activation = {
-    copyApplications = let
-      apps = pkgs.buildEnv {
-        name = "home-manager-applications";
-        paths = config.home.packages;
-        pathsToLink = "/Applications";
+  programs.direnv = {
+    enable = true;
+    nix-direnv = {
+      enable = true;
+    };
+  };
+  programs.helix = {
+    enable = true;
+    settings = {
+      theme = "everforest_dark";
+      editor = {
+        true-color = true;
+        cursor-shape = {
+          insert = "bar";
+          normal = "block";
+          select = "underline";
+        };
       };
-    in if pkgs.stdenv.isDarwin
-    then lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-      baseDir="$HOME/Applications/Home Manager Apps"
-      if [ -d "$baseDir" ]; then
-        rm -rf "$baseDir"
-      fi
-      mkdir -p "$baseDir"
-      for appFile in ${apps}/Applications/*; do
-        target="$baseDir/$(basename "$appFile")"
-        $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
-        $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
-      done
-    ''
-    else
-    "";
+    };
+  };
+
+
+  home.activation = {
+    copyApplications =
+      let
+        apps = pkgs.buildEnv {
+          name = "home-manager-applications";
+          paths = config.home.packages;
+          pathsToLink = "/Applications";
+        };
+      in
+      if pkgs.stdenv.isDarwin
+      then
+        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+          baseDir="$HOME/Applications/Home Manager Apps"
+          if [ -d "$baseDir" ]; then
+            rm -rf "$baseDir"
+          fi
+          mkdir -p "$baseDir"
+          for appFile in ${apps}/Applications/*; do
+            target="$baseDir/$(basename "$appFile")"
+            $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
+            $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
+          done
+        ''
+      else
+        "";
   };
 }
