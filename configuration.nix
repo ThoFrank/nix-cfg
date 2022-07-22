@@ -15,6 +15,7 @@
       ./services/ddclient.nix
       ./services/nextcloud.nix
       ./services/mariadb.nix
+      ./services/home-assistant.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -123,7 +124,11 @@
   # services.httpd.enable = true;
   # services.httpd.adminAddr = "thomas@franks-im-web.de";
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [ 80 443 ] ++ config.services.openssh.ports;
+  networking.firewall.allowedTCPPorts = [
+    80
+    443
+    21063 # homebridge
+  ] ++ config.services.openssh.ports;
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
