@@ -17,6 +17,7 @@
       dbuser = "nextcloud";
       dbname = "nextcloud";
       dbpassFile = "/.secret/db.nextcloud.pass";
+      dbport = builtins.toString config.services.mysql.settings.mysqld.port;
     };
   };
 }
