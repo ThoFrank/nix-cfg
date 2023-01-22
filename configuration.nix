@@ -9,7 +9,6 @@
     [
       # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
       # ./monitoring
       ./includes/zfs.nix
       ./includes/services/nginx.nix
@@ -227,6 +226,7 @@
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
+  system.autoUpgrade.flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
   system.autoUpgrade.rebootWindow.lower = "01:00";
   system.autoUpgrade.rebootWindow.upper = "05:00";
 
