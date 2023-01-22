@@ -32,6 +32,7 @@ in
     pkgs.ripgrep
     pkgs.libreoffice
     pkgs.just
+    pkgs.btop
   ]
   ++ lib.optionals (machine.operatingSystem != "Darwin")
     [

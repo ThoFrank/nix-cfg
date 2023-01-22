@@ -11,28 +11,40 @@
       ./hardware-configuration.nix
       <home-manager/nixos>
       # ./monitoring
-      ./services/letsencrypt.nix
-      ./services/ddclient.nix
-      ./services/nextcloud.nix
-      ./services/mariadb.nix
-      ./services/home-assistant.nix
+      ./includes/zfs.nix
+      ./includes/services/nginx.nix
+      ./includes/services/letsencrypt.nix
+      ./includes/services/ddclient.nix
+      ./includes/services/nextcloud.nix
+      ./includes/services/mariadb.nix
+      ./includes/services/home-assistant.nix
+      ./includes/services/samba.nix
+      ./includes/services/plex.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+      systemd-boot.configurationLimit = 20;
+    };    
+    kernelModules = ["sg"];
+  };
+  
 
   networking.hostName = "Nix-PC"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
+  networking.networkmanager.enable = true;
+  # networking.useNetworkd = true;
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
-  networking.useDHCP = false;
-  networking.interfaces.enp2s0.useDHCP = true;
+  # networking.useDHCP = true;
+  # networking.interfaces.enp2s0.useDHCP = true;
 
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
@@ -78,13 +90,20 @@
   users.users = {
     thomas = {
       isNormalUser = true;
-      extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "bilder" "cdrom" ]; # Enable ‘sudo’ for the user.
       shell = pkgs.zsh;
     };
     root = {
       hashedPassword = "!";
       #home.packages = [ pkgs.atool pkgs.httpie ];
     };
+    nextcloud = {
+      extraGroups = [ "bilder" ];
+    };
+  };
+  
+  users.groups = {
+    bilder = {}; # Access to /tank/Bilder
   };
 
   # List packages installed in system profile. To search, run:
@@ -128,8 +147,12 @@
     80
     443
     21063 # homebridge
+    25565 # minecraft
+    config.services.home-assistant.config.http.server_port
   ] ++ config.services.openssh.ports;
-  # networking.firewall.allowedUDPPorts = [ ... ];
+  networking.firewall.allowedUDPPorts = [ 
+    25565 # minecraft
+  ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
@@ -143,7 +166,19 @@
 
 
   ### ADDED BY ME
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs = {
+    config.allowUnfree = true;
+    overlays = [
+      (
+        self: super: {
+          libbluray = super.libbluray.override {
+            withAACS = true;
+            withBDplus = true;
+          };
+        }
+      )
+    ];
+  };
   home-manager.users.thomas = import ./home.nix;
   home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
@@ -185,6 +220,7 @@
         forceSSL = true;
         ## LetsEncrypt
         enableACME = true;
+        serverAliases = ["frankcloud.firewall-gateway.com"];
       };
     };
   };
@@ -198,5 +234,8 @@
   nix.settings.auto-optimise-store = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  
+  services.fwupd.enable = true;
+  services.flatpak.enable = true;
 }
 

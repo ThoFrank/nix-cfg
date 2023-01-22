@@ -3,9 +3,11 @@
   imports = [ ];
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud24;
+    package = pkgs.nextcloud25;
     hostName = "cloud.franks-im-web.de";
     https = true;
+    home = "/mnt/tank/nextcloud/nextcloud";
+    enableBrokenCiphersForSSE = false;
     config = {
       adminuser = "admin";
       adminpassFile = "/.secret/nextcloud.admin.pass";
