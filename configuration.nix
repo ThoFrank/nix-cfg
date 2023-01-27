@@ -227,7 +227,7 @@
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
   system.autoUpgrade.flake = "${config.users.users.thomas.home}/src/nix-stuff";
-  system.autoUpgrade.flags = ["--update-input" "nixpkgs" "--commit-lock-file"];
+  system.autoUpgrade.flags = ["--update-input" "nixpkgs" "--update-input" "unstable" "--commit-lock-file"];
   system.autoUpgrade.rebootWindow.lower = "01:00";
   system.autoUpgrade.rebootWindow.upper = "05:00";
 
