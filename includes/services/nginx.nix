@@ -22,6 +22,12 @@
         enableACME = true;
         serverAliases = ["frankcloud.firewall-gateway.com"];
       };
+      "brebeck.online" = {
+        forceSSL = true;
+        enableACME = true;
+        root = ./brebeck.online;
+        serverAliases = ["www.brebeck.online"];
+      };
     };
   };
 }
