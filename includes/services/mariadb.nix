@@ -12,4 +12,12 @@
       }
     ];
   };
+
+  services.mysqlBackup = {
+    enable = true;
+    singleTransaction = true;
+    user = config.services.nextcloud.config.dbuser;
+    databases = [ config.services.nextcloud.config.dbname ];
+    location = "/mnt/tank/nextcloud/db_backup";
+  };
 }
