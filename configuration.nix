@@ -167,16 +167,6 @@
   ### ADDED BY ME
   nixpkgs = {
     config.allowUnfree = true;
-    overlays = [
-      (
-        self: super: {
-          libbluray = super.libbluray.override {
-            withAACS = true;
-            withBDplus = true;
-          };
-        }
-      )
-    ];
   };
   home-manager.users.thomas = import ./home.nix;
   home-manager.useGlobalPkgs = true;
