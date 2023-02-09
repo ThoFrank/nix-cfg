@@ -216,6 +216,7 @@
 
   system.autoUpgrade.enable = true;
   system.autoUpgrade.allowReboot = true;
+  systemd.watchdog.rebootTime = "20m";
   system.autoUpgrade.flake = "${config.users.users.thomas.home}/src/nix-stuff";
   system.autoUpgrade.flags = ["--update-input" "nixpkgs" "--update-input" "unstable" "--commit-lock-file"];
   system.autoUpgrade.rebootWindow.lower = "01:00";
