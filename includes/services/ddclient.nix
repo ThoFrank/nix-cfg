@@ -15,6 +15,12 @@
   containers."brebeckOnline" = {
     autoStart = true;
     ephemeral = true;
+    bindMounts = {
+      "/.secret/brebeck.ddclient.pass" = {
+        hostPath = "/.secret/brebeck.ddclient.pass";
+        isReadOnly = false;
+      };
+    };
     config = {pkgs, ...}: {
       system.stateVersion = "22.11";
       services.ddclient = {
@@ -22,9 +28,10 @@
         protocol = "namecheap";
         use = "web, web=dynamicdns.park-your-domain.com/getip";
         server = "dynamicdns.park-your-domain.com";
+        ssl = true;
         username = "brebeck.online";
         passwordFile = "/.secret/brebeck.ddclient.pass";
-        domains = [ "brebeck.online" ];
+        domains = [ "@" ];
       };
     };
   };
