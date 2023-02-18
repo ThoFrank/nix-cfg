@@ -27,6 +27,7 @@
       systemd-boot.enable = true;
       efi.canTouchEfiVariables = true;
       systemd-boot.configurationLimit = 20;
+      systemd-boot.memtest86.enable = true;
     };    
     kernelModules = ["sg"];
   };
