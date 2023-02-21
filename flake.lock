@@ -109,11 +109,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1677011037,
-        "narHash": "sha256-1bOotUXPMuBAOXyA4hCJ7Jnl94fegEjIlHUDlhvGBU8=",
+        "lastModified": 1677013228,
+        "narHash": "sha256-VdwFtEtn37D5/k32kh/4ZofcSgFhDnaWz3l+PxXD6BQ=",
         "owner": "PSV-Bogenschiessen",
         "repo": "psv-register",
-        "rev": "30b635b9079b3b96cb26a5da97e0b821df50244a",
+        "rev": "3ca395164e46d2a423bd11d4c01c1bfc15c08140",
         "type": "github"
       },
       "original": {

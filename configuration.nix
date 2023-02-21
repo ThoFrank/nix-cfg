@@ -19,6 +19,7 @@
       ./includes/services/home-assistant.nix
       ./includes/services/samba.nix
       ./includes/services/plex.nix
+      ./includes/services/psv-register.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

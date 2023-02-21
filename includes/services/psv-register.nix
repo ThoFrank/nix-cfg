@@ -2,7 +2,7 @@
 {
   services.psv-registration-wa = {
     enable = true;
-    smtp-password-file = "/.secret/";
+    smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
       hostName = "wa.psv-register.franks-im-web.de";
