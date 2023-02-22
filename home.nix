@@ -33,6 +33,7 @@ in
     pkgs.libreoffice
     pkgs.just
     pkgs.btop
+    pkgs.sqlitebrowser
   ]
   ++ lib.optionals (machine.operatingSystem != "Darwin")
     [
