@@ -41,7 +41,7 @@ in {
       switch = {
         platform = "flux";
         name = "Tageszeit Temperatur";
-        lights = ["light.klotz" "light.pilz" "light.deckenlampe"];
+        lights = ["light.klotz" "light.pilz" "light.deckenlampe" "light.fakefenster"];
         start_time = "7:00";
         stop_time = "23:00";
         mode = "mired";
