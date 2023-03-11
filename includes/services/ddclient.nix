@@ -23,6 +23,7 @@
     };
     config = {pkgs, ...}: {
       system.stateVersion = "22.11";
+      networking.networkmanager.enable = true;
       services.ddclient = {
         enable = true;
         protocol = "namecheap";
