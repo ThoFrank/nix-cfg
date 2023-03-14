@@ -5,7 +5,7 @@
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
-      hostName = "wa.psv-register.franks-im-web.de";
+      hostNames = ["wa.psv-register.franks-im-web.de"];
     };
     settings = {
       port = 3001;
