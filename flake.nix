@@ -14,6 +14,10 @@
       url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    psv-register-feld = {
+      url = "github:PSV-Bogenschiessen/psv-register/VM-Feld";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
@@ -33,6 +37,7 @@
         ./configuration.nix
         home-manager.nixosModules.home-manager
         inputs.psv-register-wa.nixosModules."${system}".psv-registration
+        inputs.psv-register-feld.nixosModules."${system}".psv-registration
       ];
     });
   };
