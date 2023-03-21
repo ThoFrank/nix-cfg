@@ -155,11 +155,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1679342996,
-        "narHash": "sha256-ML5qtkmO+nnmya9Tg6U6rbcp3Szivgv0KW8ARSMvy3I=",
+        "lastModified": 1679405295,
+        "narHash": "sha256-X0Eg5coD4BhRK1gBaCoKTQl9CyS038Dhuwk/7dJUwKI=",
         "owner": "PSV-Bogenschiessen",
         "repo": "psv-register",
-        "rev": "c0225965938028a5981e9aba6257f8c6b8aa68fb",
+        "rev": "189ca04e36851380a5e03dc605da64e00bf70a28",
         "type": "github"
       },
       "original": {
@@ -178,11 +178,11 @@
         "rust-overlay": "rust-overlay_2"
       },
       "locked": {
-        "lastModified": 1679343115,
-        "narHash": "sha256-Itx+dF8Y/+0szALVK9v2PM6E/VAhYw1IvZD+uNlhknY=",
+        "lastModified": 1679405432,
+        "narHash": "sha256-q5R2rEVM0qg0rpxi5ap+3s6mmyLUFg31DQkU6xXGsYM=",
         "owner": "PSV-Bogenschiessen",
         "repo": "psv-register",
-        "rev": "e55beb177cad5744c7d9e7c816ad7b95a941d131",
+        "rev": "5d8ba2da383fdf819478cb18b67322f79225c66f",
         "type": "github"
       },
       "original": {
