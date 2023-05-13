@@ -12,11 +12,9 @@
     
     psv-register-wa = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
     psv-register-feld = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-Feld";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
