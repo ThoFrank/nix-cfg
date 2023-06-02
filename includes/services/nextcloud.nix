@@ -8,6 +8,7 @@
     https = true;
     home = "/mnt/tank/nextcloud/nextcloud";
     enableBrokenCiphersForSSE = false;
+    phpOptions."opcache.interned_strings_buffer" = "16";
     config = {
       adminuser = "admin";
       adminpassFile = "/.secret/nextcloud.admin.pass";
