@@ -41,6 +41,13 @@
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
 
+  # container NAT
+  networking.nat = {
+    enable = true;
+    internalInterfaces = ["ve-+"];
+    externalInterface = "enp2s0";
+  };
+
   # The global useDHCP flag is deprecated, therefore explicitly set to false here.
   # Per-interface useDHCP will be mandatory in the future, so this generated config
   # replicates the default behaviour.
