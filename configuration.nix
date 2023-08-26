@@ -98,7 +98,7 @@
   users.users = {
     thomas = {
       isNormalUser = true;
-      extraGroups = [ "wheel" "bilder" "cdrom" ]; # Enable ‘sudo’ for the user.
+      extraGroups = [ "wheel" "bilder" "cdrom" "docker" ]; # Enable ‘sudo’ for the user.
       shell = pkgs.zsh;
     };
     root = {
@@ -124,6 +124,7 @@
     gparted
     rnix-lsp
     nixpkgs-fmt
+    docker-compose
   ];
 
   nix = {
@@ -181,7 +182,12 @@
   home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
   virtualisation.virtualbox.host.enable = true;
+  virtualisation.docker.enable = true;
+  virtualisation.docker.autoPrune.enable = true;
   users.extraGroups.vboxusers.members = [ "thomas" ];
+  users.extraGroups.docker.members = [ "thomas" ];
+  programs._1password.enable = true;
+  programs._1password-gui.enable = true;
 
   # Disable the GNOME3/GDM auto-suspend feature that cannot be disabled in GUI!
   # If no user is logged in, the machine will power down after 20 minutes.
