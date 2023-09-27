@@ -122,22 +122,6 @@
         "type": "github"
       }
     },
-    "nixpkgs-ddclient": {
-      "locked": {
-        "lastModified": 1626206592,
-        "narHash": "sha256-IozaK2JXH73qvHp6JRwHcLHT00oggQj9UChspwAct58=",
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "70e2fceb6a2e4a33aabca138affb3587337e501e",
-        "type": "github"
-      },
-      "original": {
-        "owner": "NixOS",
-        "repo": "nixpkgs",
-        "rev": "70e2fceb6a2e4a33aabca138affb3587337e501e",
-        "type": "github"
-      }
-    },
     "nixpkgs_2": {
       "locked": {
         "lastModified": 1671417167,
@@ -249,7 +233,6 @@
         "home-manager": "home-manager",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs",
-        "nixpkgs-ddclient": "nixpkgs-ddclient",
         "psv-register-feld": "psv-register-feld",
         "psv-register-wa": "psv-register-wa",
         "unstable": "unstable"
