@@ -109,6 +109,11 @@
     nextcloud = {
       extraGroups = [ "bilder" ];
     };
+    tobias = {
+      isNormalUser = true;
+      createHome = false;
+      home = "/var/psv-register";
+    };
   };
   
   users.groups = {
