@@ -19,6 +19,9 @@
     psv-register-indoor = {
       url = "github:PSV-Bogenschiessen/psv-register/Indoor";
     };
+    psv-register-halle = {
+      url = "github:PSV-Bogenschiessen/psv-register/VM-Halle";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
@@ -40,6 +43,7 @@
         inputs.psv-register-wa.nixosModules."${system}".psv-registration
         inputs.psv-register-feld.nixosModules."${system}".psv-registration
         inputs.psv-register-indoor.nixosModules."${system}".psv-registration
+        inputs.psv-register-halle.nixosModules."${system}".psv-registration
       ];
     });
   };
