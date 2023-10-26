@@ -153,7 +153,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
-  services.openssh.settings.PasswordAuthentication = false;
+  services.openssh.settings.PasswordAuthentication = true;
 
   # services.httpd.enable = true;
   # services.httpd.adminAddr = "thomas@franks-im-web.de";
