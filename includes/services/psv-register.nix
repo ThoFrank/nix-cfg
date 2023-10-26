@@ -74,7 +74,7 @@
       hostNames = [ "amhalle.bogen-psv.de" "halle.psv-register.franks-im-web.de" ];
     };
     settings = {
-      port = 3003;
+      port = 3004;
       mail_server = {
         smtp_server = "alfa3023.alfahosting-server.de";
         smtp_username = "web1218p6";
