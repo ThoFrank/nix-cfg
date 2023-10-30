@@ -71,7 +71,7 @@
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
-      hostNames = [ "amhalle.bogen-psv.de" "halle.psv-register.franks-im-web.de" ];
+      hostNames = [ "amha.bogen-psv.de" "halle.psv-register.franks-im-web.de" ];
     };
     settings = {
       port = 3004;
