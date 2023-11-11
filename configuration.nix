@@ -20,6 +20,7 @@
       ./includes/services/home-assistant.nix
       ./includes/services/samba.nix
       ./includes/services/plex.nix
+      ./includes/services/minidlna.nix
       ./includes/services/psv-register.nix
     ];
 
