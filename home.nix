@@ -1,12 +1,10 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, vars, ... }:
 
-let machine = import ./machine.nix;
-in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
-  home.username = machine.username;
-  home.homeDirectory = machine.homedir;
+  home.username = vars.username;
+  home.homeDirectory = vars.homedir;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -35,16 +33,18 @@ in
     pkgs.btop
     pkgs.sqlitebrowser
   ]
-  ++ lib.optionals (machine.operatingSystem != "Darwin")
+  ++ lib.optionals (pkgs.stdenv.isLinux)
     [
       # linux only
       pkgs.spotify
       pkgs.minecraft
     ]
-  ++ lib.optionals (machine.operatingSystem == "Darwin") [
+  ++ lib.optionals (pkgs.stdenv.isDarwin) [
     # darwin only
     pkgs.mas
     pkgs.libiconv
+    pkgs.nixos-shell
+    pkgs.iterm2
   ];
 
   programs.ssh = {
@@ -77,6 +77,17 @@ in
         user = "pi";
         identityFile = "~/.ssh/id_pi";
         port = 22;
+      };
+      "nix-pc" = {
+        hostname = "cloud.franks-im-web.de";
+        user = "thomas";
+        identityFile = "~/.ssh/nix-pc";
+      };
+      "code.tvl.fyi" = {
+        hostname = "code.tvl.fyi";
+        user = "thofrank";
+        port = 29418;
+        identityFile = "~/.ssh/tvl_gerrit";
       };
     };
   };
@@ -126,15 +137,7 @@ in
   programs.helix = {
     enable = true;
     settings = {
-      theme = "everforest_dark";
-      editor = {
-        true-color = true;
-        cursor-shape = {
-          insert = "bar";
-          normal = "block";
-          select = "underline";
-        };
-      };
+      theme = "one_dark";
     };
   };
 
@@ -148,8 +151,7 @@ in
           pathsToLink = "/Applications";
         };
       in
-      if pkgs.stdenv.isDarwin
-      then
+      mkIf pkgs.stdenv.isDarwin
         lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           baseDir="$HOME/Applications/Home Manager Apps"
           if [ -d "$baseDir" ]; then
@@ -161,8 +163,6 @@ in
             $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
             $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
           done
-        ''
-      else
-        "";
+        '';
   };
 }

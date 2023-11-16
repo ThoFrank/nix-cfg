@@ -1,12 +1,5 @@
-{ config, pkgs, ... }:
-let
-  user = "thomas";
-in
-rec {
-  imports = [
-    <home-manager/nix-darwin>
-    (import ./pam.nix)
-  ];
+{ config, pkgs, vars, ... }:
+{
   environment.systemPackages =
     [
       pkgs.vim
@@ -24,9 +17,19 @@ rec {
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
-  users.users.${user}.home = "/Users/${user}";
+  users.users.${vars.username}.home = vars.homedir;
 
-  home-manager.users.${user} = import ./home.nix;
   home-manager.useUserPackages = true;
   security.pam.enableSudoTouchIdAuth = true;
+
+  nix = {
+    package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
+    extraOptions = ''
+      experimental-features = nix-command flakes
+      keep-outputs = true
+      keep-derivations = true
+      trusted-users = @wheel
+    '';
+      # builders = ssh://nix-pc x86_64-linux ; ssh://nix-pc aarch64-linux
+   };
 }
