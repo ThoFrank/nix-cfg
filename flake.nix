@@ -35,10 +35,10 @@
         }
       );
     };
-    nixosConfigurations."Nix-PC" = nixpkgs.lib.nixosSystem ( {
+    nixosConfigurations."Nix-PC" = nixpkgs.lib.nixosSystem rec {
      system = "x86_64-linux";
       specialArgs = {
-        var = {
+        vars = {
           username = "thomas";
           homedir = "/home/thomas";
         };
@@ -49,12 +49,12 @@
         nixos-hardware.nixosModules.common-pc-ssd
         ./configuration.nix
         home-manager.nixosModules.home-manager
-        inputs.psv-register-wa.nixosModules."${self.system}".psv-registration
-        inputs.psv-register-feld.nixosModules."${self.system}".psv-registration
-        inputs.psv-register-indoor.nixosModules."${self.system}".psv-registration
-        inputs.psv-register-halle.nixosModules."${self.system}".psv-registration
+        inputs.psv-register-wa.nixosModules."${system}".psv-registration
+        inputs.psv-register-feld.nixosModules."${system}".psv-registration
+        inputs.psv-register-indoor.nixosModules."${system}".psv-registration
+        inputs.psv-register-halle.nixosModules."${system}".psv-registration
       ];
-    });
+    };
     darwinConfigurations."Thomas-MacBook-Pro" = inputs.nix-darwin.lib.darwinSystem {
       system = "x86_64-darwin";
       specialArgs = {

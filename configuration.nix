@@ -185,7 +185,6 @@
   nixpkgs = {
     config.allowUnfree = true;
   };
-  home-manager.users.thomas = import ./home.nix;
   home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
   virtualisation.virtualbox.host.enable = true;

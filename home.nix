@@ -151,7 +151,7 @@
           pathsToLink = "/Applications";
         };
       in
-      mkIf pkgs.stdenv.isDarwin
+      pkgs.lib.mkIf pkgs.stdenv.isDarwin
         lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           baseDir="$HOME/Applications/Home Manager Apps"
           if [ -d "$baseDir" ]; then
