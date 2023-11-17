@@ -1,4 +1,4 @@
-{ config, pkgs, lib, vars, ... }:
+vars: { config, pkgs, lib, ... }:
 
 {
   # Home Manager needs a bit of information about you and the
@@ -28,7 +28,6 @@
     pkgs.python3
     pkgs.fd
     pkgs.ripgrep
-    pkgs.libreoffice
     pkgs.just
     pkgs.btop
     pkgs.sqlitebrowser
@@ -38,6 +37,7 @@
       # linux only
       pkgs.spotify
       pkgs.minecraft
+      pkgs.libreoffice
     ]
   ++ lib.optionals (pkgs.stdenv.isDarwin) [
     # darwin only
@@ -152,7 +152,7 @@
         };
       in
       pkgs.lib.mkIf pkgs.stdenv.isDarwin
-        lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+       ( lib.hm.dag.entryAfter [ "writeBoundary" ] ''
           baseDir="$HOME/Applications/Home Manager Apps"
           if [ -d "$baseDir" ]; then
             rm -rf "$baseDir"
@@ -163,6 +163,6 @@
             $DRY_RUN_CMD cp ''${VERBOSE_ARG:+-v} -fHRL "$appFile" "$baseDir"
             $DRY_RUN_CMD chmod ''${VERBOSE_ARG:+-v} -R +w "$target"
           done
-        '';
+        '');
   };
 }

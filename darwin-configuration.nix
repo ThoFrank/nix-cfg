@@ -18,8 +18,9 @@
   system.stateVersion = 4;
 
   users.users.${vars.username}.home = vars.homedir;
+  home-manager.users.${vars.username} = import ./home.nix vars;
 
-  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs = true;
   security.pam.enableSudoTouchIdAuth = true;
 
   nix = {

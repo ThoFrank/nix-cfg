@@ -185,6 +185,7 @@
   nixpkgs = {
     config.allowUnfree = true;
   };
+  home-manager.users.${vars.username} = import ./home.nix vars;
   home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
   virtualisation.virtualbox.host.enable = true;

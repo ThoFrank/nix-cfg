@@ -64,6 +64,7 @@
         };
       };
       modules = [
+        { nixpkgs.config.allowUnfree = true; }
         ./darwin-configuration.nix
         home-manager.darwinModules.home-manager
         {_module.args.var = {username = "thomas"; homedir = "/Users/thomas";};}
