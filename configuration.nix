@@ -12,9 +12,7 @@
       # ./monitoring
       ./includes/zfs.nix
       ./includes/services/nginx.nix
-      ./includes/services/inadyn.nix
       ./includes/services/letsencrypt.nix
-      ./includes/services/ddclient.nix
       ./includes/services/nextcloud.nix
       ./includes/services/mariadb.nix
       ./includes/services/home-assistant.nix
