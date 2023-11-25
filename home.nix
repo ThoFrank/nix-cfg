@@ -45,6 +45,7 @@ vars: { config, pkgs, lib, ... }:
     pkgs.libiconv
     pkgs.nixos-shell
     pkgs.iterm2
+    pkgs.texlive.combined.scheme-full
   ];
 
   programs.ssh = {
@@ -137,7 +138,7 @@ vars: { config, pkgs, lib, ... }:
   programs.helix = {
     enable = true;
     settings = {
-      theme = "one_dark";
+      theme = "onedark";
     };
   };
 
