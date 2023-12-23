@@ -137,6 +137,7 @@ vars: { config, pkgs, lib, ... }:
   };
   programs.helix = {
     enable = true;
+    defaultEditor = true;
     settings = {
       theme = "onedark";
     };
