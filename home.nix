@@ -31,6 +31,7 @@ vars: { config, pkgs, lib, ... }:
     pkgs.just
     pkgs.btop
     pkgs.sqlitebrowser
+    pkgs.gh
   ]
   ++ lib.optionals (pkgs.stdenv.isLinux)
     [
