@@ -7,19 +7,17 @@
 {
   imports =
     [
-      # Include the results of the hardware scan.
-      ./hardware-configuration.nix
       # ./monitoring
-      ./includes/zfs.nix
-      ./includes/services/nginx.nix
-      ./includes/services/letsencrypt.nix
-      ./includes/services/nextcloud.nix
-      ./includes/services/mariadb.nix
-      ./includes/services/home-assistant.nix
-      ./includes/services/samba.nix
-      ./includes/services/plex.nix
-      ./includes/services/minidlna.nix
-      ./includes/services/psv-register.nix
+      ../../includes/zfs.nix
+      ../../includes/services/nginx.nix
+      ../../includes/services/letsencrypt.nix
+      ../../includes/services/nextcloud.nix
+      ../../includes/services/mariadb.nix
+      ../../includes/services/home-assistant.nix
+      ../../includes/services/samba.nix
+      ../../includes/services/plex.nix
+      ../../includes/services/minidlna.nix
+      ../../includes/services/psv-register.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -132,13 +130,6 @@
     docker-compose
   ];
 
-  nix = {
-    package = pkgs.nixFlakes; # or versioned attributes like nixVersions.nix_2_8
-    extraOptions = ''
-      experimental-features = nix-command flakes
-    '';
-  };
-
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
@@ -180,10 +171,7 @@
 
 
   ### ADDED BY ME
-  nixpkgs = {
-    config.allowUnfree = true;
-  };
-  home-manager.users.${vars.username} = import ./home.nix vars;
+  home-manager.users.${vars.username} = import ../../home.nix vars;
   home-manager.useGlobalPkgs = true;
   programs.zsh.enable = true;
   virtualisation.virtualbox.host.enable = true;
@@ -241,9 +229,6 @@
   system.autoUpgrade.flags = ["--update-input" "nixpkgs" "--update-input" "unstable" "--commit-lock-file"];
   system.autoUpgrade.rebootWindow.lower = "01:00";
   system.autoUpgrade.rebootWindow.upper = "05:00";
-
-  nix.gc.automatic = true;
-  nix.settings.auto-optimise-store = true;
 
   boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
   

@@ -47,7 +47,8 @@
         {nixpkgs.overlays = [self.overlays.addUnstable];}
         nixos-hardware.nixosModules.common-cpu-intel
         nixos-hardware.nixosModules.common-pc-ssd
-        ./configuration.nix
+        ./includes/common
+        ./machines/Nix-PC
         home-manager.nixosModules.home-manager
         inputs.psv-register-wa.nixosModules."${system}".psv-registration
         inputs.psv-register-feld.nixosModules."${system}".psv-registration
@@ -64,8 +65,8 @@
         };
       };
       modules = [
-        { nixpkgs.config.allowUnfree = true; }
-        ./darwin-configuration.nix
+        ./includes/common
+        ./machines/Thomas-MacBook-Pro.nix
         home-manager.darwinModules.home-manager
         {_module.args.var = {username = "thomas"; homedir = "/Users/thomas";};}
       ];
