@@ -12,6 +12,11 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     
     nixos-hardware.url = "github:NixOS/nixos-hardware/master";
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
     psv-register-wa = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
@@ -54,6 +59,23 @@
         inputs.psv-register-feld.nixosModules."${system}".psv-registration
         inputs.psv-register-indoor.nixosModules."${system}".psv-registration
         inputs.psv-register-halle.nixosModules."${system}".psv-registration
+      ];
+    };
+    nixosConfigurations."Nix-Pi" = nixpkgs.lib.nixosSystem {
+     system = "aarch64-linux";
+      specialArgs = {
+        vars = {
+          username = "thomas";
+          homedir = "/home/thomas";
+        };
+      };
+      modules = [
+        {nixpkgs.overlays = [self.overlays.addUnstable];}
+        nixos-hardware.nixosModules.raspberry-pi-4
+        nixos-hardware.nixosModules.common-pc-ssd
+        ./includes/common
+        ./machines/Nix-Pi/configuration.nix
+        inputs.nixos-generators.nixosModules.all-formats
       ];
     };
     darwinConfigurations."Thomas-MacBook-Pro" = inputs.nix-darwin.lib.darwinSystem {
