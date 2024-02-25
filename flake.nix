@@ -75,6 +75,7 @@
         nixos-hardware.nixosModules.common-pc-ssd
         ./includes/common
         ./machines/Nix-Pi/configuration.nix
+        ./machines/Nix-Pi/hardware-configuration.nix
         inputs.nixos-generators.nixosModules.all-formats
       ];
     };
