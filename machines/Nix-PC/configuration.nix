@@ -125,7 +125,6 @@
     firefox
     gnomeExtensions.dash-to-dock
     gparted
-    rnix-lsp
     nixpkgs-fmt
     docker-compose
   ];
