@@ -21,7 +21,6 @@ vars: { config, pkgs, lib, ... }:
 
   home.packages = [
     pkgs.rustup
-    pkgs.tmux
     pkgs.thefuck
     pkgs.htop
     pkgs.nixpkgs-review
@@ -98,6 +97,20 @@ vars: { config, pkgs, lib, ... }:
     userName = "Thomas Frank";
     userEmail = "thomas@franks-im-web.de";
   };
+
+  programs.tmux = {
+    enable = true;
+    extraConfig = ''
+      set -sg escape-time 0
+      set -g mouse on
+      
+      set -g default-terminal "''${TERM}"
+      set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm' # undercurl support
+      set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m' # underscore colours - needs tmux-3.0
+    '';
+      # set -g mouse-select-pane on
+  };
+
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
@@ -129,6 +142,11 @@ vars: { config, pkgs, lib, ... }:
       ];
       theme = "robbyrussell";
     };
+    initExtra = ''
+      if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+        tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
+      fi
+    '';
   };
   programs.direnv = {
     enable = true;
