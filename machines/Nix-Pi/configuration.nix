@@ -30,9 +30,10 @@
     settings.PasswordAuthentication = false;
   };
   
+  nixpkgs.overlays = [(import ../../overlays/octoprint_plugins.nix)];
   services.octoprint = {
     enable = true;
-    port = 80;
     openFirewall = true;
+    plugins = p: [p.octoprint-M73ETAOverride];
   };
 }
