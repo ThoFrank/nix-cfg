@@ -5,7 +5,11 @@
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
-      hostNames = ["amwa.bogen-psv.de" "anmeldung.bogen-psv.de" "wa.psv-register.franks-im-web.de"];
+      hostNames = [
+        "amwa.bogen-psv.de"
+        # "anmeldung.bogen-psv.de"
+        "wa.psv-register.franks-im-web.de"
+      ];
     };
     settings = {
       port = 3001;
