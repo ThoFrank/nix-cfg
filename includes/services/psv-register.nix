@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   services.psv-registration-wa = {
-    enable = false;
+    enable = true;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
@@ -45,7 +45,7 @@
 
   };
   services.psv-registration-indoor = {
-    enable = true;
+    enable = false;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
@@ -67,7 +67,7 @@
 
   };
   services.psv-registration-vm-halle = {
-    enable = true;
+    enable = false;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
