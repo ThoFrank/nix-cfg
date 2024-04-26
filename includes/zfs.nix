@@ -71,5 +71,6 @@
         recursive = true;
       };
     };
+    commonArgs = [ "--no-sync-snap" ];
   };
 }
