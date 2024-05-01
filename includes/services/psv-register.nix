@@ -27,7 +27,7 @@
 
   };
   services.psv-registration-feld = {
-    enable = true;
+    enable = false;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
