@@ -23,6 +23,7 @@
     tmux
     wget
     git
+    (callPackage ../../programs/camera-streamer {stdenv = clangStdenv;})
   ];
 
   services.openssh = {
@@ -36,4 +37,6 @@
     openFirewall = true;
     plugins = p: [p.octoprint-M73ETAOverride];
   };
+
+  services.mjpg-streamer.enable = true;
 }
