@@ -221,7 +221,7 @@
     };
   };
 
-  system.autoUpgrade.enable = true;
+  system.autoUpgrade.enable = false;
   system.autoUpgrade.allowReboot = true;
   systemd.watchdog.rebootTime = "20m";
   system.autoUpgrade.flake = "${config.users.users.thomas.home}/src/nix-stuff";
