@@ -3,7 +3,7 @@
   imports = [ ];
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud28;
+    package = pkgs.nextcloud29;
     hostName = "cloud.franks-im-web.de";
     https = true;
     home = "/mnt/tank/nextcloud/nextcloud";
@@ -12,14 +12,17 @@
       adminuser = "admin";
       adminpassFile = "/.secret/nextcloud.admin.pass";
 
-      extraTrustedDomains = [ "frankcloud.firewall-gateway.com" ];
-
       # db
       dbtype = "mysql";
       dbuser = "nextcloud";
       dbname = "nextcloud";
       dbpassFile = "/.secret/db.nextcloud.pass";
-      dbport = builtins.toString config.services.mysql.settings.mysqld.port;
+      dbhost = "localhost:${builtins.toString config.services.mysql.settings.mysqld.port}";
+    };
+
+    settings = {
+      trustedDomains = [ "frankcloud.firewall-gateway.com" ];
+      default_phone_region = "DE";
     };
   };
 }

@@ -36,7 +36,7 @@ vars: { config, pkgs, lib, ... }:
     [
       # linux only
       pkgs.spotify
-      pkgs.minecraft
+      # pkgs.minecraft
       pkgs.libreoffice
     ]
   ++ lib.optionals (pkgs.stdenv.isDarwin) [
