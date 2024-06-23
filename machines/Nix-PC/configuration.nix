@@ -18,6 +18,7 @@
       ../../includes/services/plex.nix
       ../../includes/services/minidlna.nix
       ../../includes/services/psv-register.nix
+      ../../includes/services/homepage-dashboard.nix
     ];
 
   # Use the systemd-boot EFI boot loader.

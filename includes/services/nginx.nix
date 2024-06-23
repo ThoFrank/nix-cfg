@@ -28,6 +28,14 @@
         root = ./brebeck.online;
         serverAliases = ["www.brebeck.online"];
       };
+      "_"= {
+        forceSSL = false;
+        enableACME = false;
+        rejectSSL = true;
+        locations."/" = {
+          proxyPass = "http://localhost:${builtins.toString config.services.homepage-dashboard.listenPort}";
+        };
+      };
     };
   };
 }
