@@ -2,7 +2,6 @@
 {
   services.homepage-dashboard = {
     enable = true;
-    openFirewall = true;
     widgets = [
       {
         resources = {
@@ -20,6 +19,12 @@
               href = "https://cloud.franks-im-web.de";
               description = "personal Nextcloud instance";
               icon = "nextcloud";
+            };
+          }{
+            "Home Assistant" = {
+              href = "http://192.168.2.2:8123";
+              description = "Open source home automation";
+              icon = "home-assistant";
             };
           }{
             "Plex" = {
