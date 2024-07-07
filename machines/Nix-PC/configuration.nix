@@ -20,6 +20,7 @@
       ../../includes/services/psv-register.nix
       ../../includes/services/homepage-dashboard.nix
       ../../includes/services/mealie.nix
+      ../../includes/services/ddclient.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
