@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 {
   services.homepage-dashboard = {
     enable = true;
@@ -21,6 +21,12 @@
               icon = "nextcloud";
             };
           }{
+            "Mealie" = {
+              href = "https://rezepte.franks-im-web.de";
+              description = "personal cookbook";
+              icon = "mealie";
+            };
+          }{
             "Home Assistant" = {
               href = "http://192.168.2.2:8123";
               description = "Open source home automation";
@@ -33,38 +39,34 @@
               icon = "plex";
             };
           }
-        ] ++ (if config.services.psv-registration-wa.enable then [
+        ] ++ lib.optional config.services.psv-registration-wa.enable 
           {
             "PSV Registration WA" = {
               href = "https://${builtins.head config.services.psv-registration-wa.nginx.hostNames}";
               icon = "mdi-bullseye-arrow";
             };
           }
-        ] else [])
-        ++ (if config.services.psv-registration-feld.enable then [
+        ++ lib.optional config.services.psv-registration-feld.enable 
           {
             "PSV Registration Feld" = {
               href = "https://${builtins.head config.services.psv-registration-feld.nginx.hostNames}";
               icon = "mdi-bullseye-arrow";
             };
           }
-        ] else [])
-        ++ (if config.services.psv-registration-indoor.enable then [
+        ++ lib.optional config.services.psv-registration-indoor.enable 
           {
             "PSV Registration Indoor" = {
               href = "https://${builtins.head config.services.psv-registration-indoor.nginx.hostNames}";
               icon = "mdi-bullseye-arrow";
             };
           }
-        ] else [])
-        ++ (if config.services.psv-registration-vm-halle.enable then [
+        ++ lib.optional config.services.psv-registration-vm-halle.enable 
           {
             "PSV Registration VM Halle" = {
               href = "https://${builtins.head config.services.psv-registration-vm-halle.nginx.hostNames}";
               icon = "mdi-bullseye-arrow";
             };
-          }
-        ] else []);
+          };
       }{
         "Remote" = [
           {
