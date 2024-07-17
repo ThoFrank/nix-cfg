@@ -30,6 +30,9 @@
     psv-register-halle = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-Halle";
     };
+    psv-register-cup = {
+      url = "github:PSV-Bogenschiessen/psv-register/PSV-Cup";
+    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
@@ -59,6 +62,7 @@
         inputs.psv-register-feld.nixosModules."${system}".psv-registration
         inputs.psv-register-indoor.nixosModules."${system}".psv-registration
         inputs.psv-register-halle.nixosModules."${system}".psv-registration
+        inputs.psv-register-cup.nixosModules."${system}".psv-registration
       ];
     };
     nixosConfigurations."Nix-Pi" = nixpkgs.lib.nixosSystem {
