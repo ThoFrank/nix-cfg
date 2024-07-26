@@ -1,25 +1,5 @@
 { config, pkgs, ... }:
-let 
-tradfriId = "dbc59b818db34ac47dbed7f59dc9a6de";
-klotzId = "ee235610828d45e10750d7fb8749ee98";
-buildKlotzAutomation = {alias, triggerSubType, actionType}: {
-  inherit alias;
-  trigger = {
-    platform = "device";
-    type = "remote_button_short_press";
-    subtype = triggerSubType;
-    domain = "zha";
-    device_id = tradfriId;
-  };
-  action = {
-    domain = "light";
-    device_id = klotzId;
-    type = actionType;
-    entity_id = "light.klotz";
-  };
-  mode = "single";
-};
-in {
+{
   imports = [ ];
   services.home-assistant = {
     enable = true;
@@ -33,11 +13,6 @@ in {
       };
       homekit = {};
       "automation ui" = "!include automations.yaml";
-      "automation manual" = [
-        (buildKlotzAutomation {alias = "tradfri - dim down"; triggerSubType = "dim_down"; actionType = "brightness_decrease";})
-        (buildKlotzAutomation {alias = "tradfri - dim up"; triggerSubType = "dim_up"; actionType = "brightness_increase";})
-        (buildKlotzAutomation {alias = "tradfri - toggle"; triggerSubType = "turn_on"; actionType = "toggle";})
-      ];
       switch = {
         platform = "flux";
         name = "Tageszeit Temperatur";
@@ -59,5 +34,42 @@ in {
         };
       };
     };
+    extraComponents = [ "mqtt" "webostv" "sonos" "apple_tv" "homekit_controller" "thread" ];
   };
+  services.zigbee2mqtt = {
+    enable = true;
+    settings = {
+      permit_join = false;
+      serial = {
+        adapter = "deconz";
+        port = "/dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2653212-if00";
+      };
+      homeassistant = true;
+      mqtt = {
+        server = "mqtt://localhost";
+        user = "zigbee2mqtt";
+        password = "!/.secret/mosquittoZM.yaml password";
+      };
+      frontend.port = 8080;
+    };
+  };
+  services.mosquitto = {
+    enable = true;
+    listeners = [
+      {
+        users = {
+          home-assistant = {
+            passwordFile = "/.secret/mosquittoHA.pass";
+            acl = [ "readwrite #" ];
+          };
+          zigbee2mqtt = {
+            passwordFile = "/.secret/mosquittoZM.pass";
+            acl = [ "readwrite #" ];
+          };
+        };
+      }
+    ];
+  };
+  networking.firewall.allowedTCPPorts = [ config.services.zigbee2mqtt.settings.frontend.port ]
+  ++ builtins.map (x: x.port) config.services.mosquitto.listeners;
 }
