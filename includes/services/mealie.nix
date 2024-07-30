@@ -8,7 +8,10 @@
   # move data to tank
   fileSystems."/var/lib/private/mealie" = {
     device = "/mnt/tank/services/mealie";
-    options = ["bind"];
+    options = [
+      "bind"
+      "x-systemd.requires=zfs-mount.service"
+    ];
   };
 
   networking.firewall.allowedTCPPorts = [
