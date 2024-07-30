@@ -11,6 +11,9 @@
         ensurePermissions."${name}.*" = "ALL PRIVILEGES";
       }
     ];
+    settings.mysqld = {
+      innodb_file_per_table = true;
+    };
   };
 
   services.mysqlBackup = {
