@@ -23,7 +23,6 @@
     settings = {
       trusted_domains = [ "frankcloud.firewall-gateway.com" ];
       default_phone_region = "DE";
-      maintenance_window_start = 1;
     };
   };
 }
