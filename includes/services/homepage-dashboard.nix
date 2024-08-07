@@ -28,9 +28,15 @@
             };
           }{
             "Home Assistant" = {
-              href = "http://192.168.2.2:8123";
+              href = "http://192.168.2.2:${builtins.toString config.services.home-assistant.config.http.server_port}";
               description = "Open source home automation";
               icon = "home-assistant";
+            };
+          }{
+            "Zigbee2Mqtt" = {
+              href = "http://192.168.2.2:${builtins.toString config.services.zigbee2mqtt.settings.frontend.port}";
+              description = "Zigbee to MQTT bridge";
+              icon = "zigbee2mqtt";
             };
           }{
             "Plex" = {
