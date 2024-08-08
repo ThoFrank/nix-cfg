@@ -72,6 +72,13 @@
               href = "https://${builtins.head config.services.psv-registration-vm-halle.nginx.hostNames}";
               icon = "mdi-bullseye-arrow";
             };
+          }
+        ++ lib.optional config.services.psv-registration-cup.enable
+          {
+            "PSV Registration PSV Cup" = {
+              href = "https://${builtins.head config.services.psv-registration-cup.nginx.hostNames}";
+              icon = "mdi-bullseye-arrow";
+            };
           };
       }{
         "Remote" = [
