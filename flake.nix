@@ -52,6 +52,10 @@
         };
       };
       modules = [
+        {
+          disabledModules = [ "services/web-apps/mealie.nix" ];
+          imports = [ "${inputs.unstable}/nixos/modules/services/web-apps/mealie.nix" ];
+        }
         {nixpkgs.overlays = [self.overlays.addUnstable];}
         nixos-hardware.nixosModules.common-cpu-intel
         nixos-hardware.nixosModules.common-pc-ssd
