@@ -17,6 +17,8 @@
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    impermanence.url = "github:nix-community/impermanence";
     
     psv-register-wa = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
@@ -67,6 +69,22 @@
         inputs.psv-register-indoor.nixosModules."${system}".psv-registration
         inputs.psv-register-halle.nixosModules."${system}".psv-registration
         inputs.psv-register-cup.nixosModules."${system}".psv-registration
+      ];
+    };
+    nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      specialArgs = {
+        vars = {
+          username = "thomas";
+          homedir = "/home/thomas";
+        };
+      };
+      modules = [
+        {nixpkgs.overlays = [self.overlays.addUnstable];}
+        ./includes/common
+        ./machines/beelink
+        home-manager.nixosModules.home-manager
+        inputs.impermanence.nixosModules.impermanence
       ];
     };
     nixosConfigurations."Nix-Pi" = nixpkgs.lib.nixosSystem {
