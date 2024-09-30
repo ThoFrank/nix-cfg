@@ -71,7 +71,7 @@
 
   };
   services.psv-registration-vm-halle = {
-    enable = false;
+    enable = true;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
@@ -93,7 +93,7 @@
 
   };
   services.psv-registration-cup = {
-    enable = true;
+    enable = false;
     smtp-password-file = "/.secret/psv.smtp.pass";
     nginx = {
       enable = true;
