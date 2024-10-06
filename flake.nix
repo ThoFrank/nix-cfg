@@ -81,6 +81,8 @@
       };
       modules = [
         {nixpkgs.overlays = [self.overlays.addUnstable];}
+        nixos-hardware.nixosModules.common-cpu-intel
+        nixos-hardware.nixosModules.common-pc-ssd
         ./includes/common
         ./machines/beelink
         home-manager.nixosModules.home-manager

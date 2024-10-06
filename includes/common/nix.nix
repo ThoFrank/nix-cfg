@@ -12,5 +12,6 @@
   
   nixpkgs = {
     config.allowUnfree = true;
+    config.hardware.enableRedistributableFirmware = true;
   };
 }
