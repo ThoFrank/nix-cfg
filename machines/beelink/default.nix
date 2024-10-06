@@ -62,8 +62,6 @@
   systemd.targets.hibernate.enable = false;
   systemd.targets.hybrid-sleep.enable = false;
 
-  powerManagement.powertop.enable = true;
-
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "de";
