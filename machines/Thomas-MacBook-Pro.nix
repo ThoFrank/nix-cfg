@@ -22,5 +22,4 @@
   home-manager.useGlobalPkgs = true;
   security.pam.enableSudoTouchIdAuth = true;
 
-  nix.settings.sandbox = true;
 }
