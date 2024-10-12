@@ -31,6 +31,8 @@ vars: { config, pkgs, lib, ... }:
     pkgs.btop
     pkgs.sqlitebrowser
     pkgs.gh
+
+    (pkgs.nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
   ]
   ++ lib.optionals (pkgs.stdenv.isLinux)
     [
@@ -100,6 +102,10 @@ vars: { config, pkgs, lib, ... }:
 
   programs.tmux = {
     enable = true;
+    plugins = with pkgs.tmuxPlugins; [
+      sensible
+      catppuccin
+    ];
     extraConfig = ''
       set -sg escape-time 0
       set -g mouse on
@@ -161,4 +167,12 @@ vars: { config, pkgs, lib, ... }:
       theme = "onedark";
     };
   };
+  programs.alacritty = {
+    enable = true;
+    settings = {
+      font.normal = {family = "ComicShannsMono Nerd Font"; style = "Regular";};
+      font.size = 14;
+    };
+  };
+  fonts.fontconfig.enable = true;
 }
