@@ -13,7 +13,6 @@
       ../../includes/services/letsencrypt.nix
       ../../includes/services/nextcloud.nix
       ../../includes/services/mariadb.nix
-      ../../includes/services/home-assistant.nix
       ../../includes/services/samba.nix
       ../../includes/services/plex.nix
       ../../includes/services/minidlna.nix
@@ -155,7 +154,6 @@
     443
     21063 # homebridge
     25565 # minecraft
-    config.services.home-assistant.config.http.server_port
   ] ++ config.services.openssh.ports;
   networking.firewall.allowedUDPPorts = [ 
     25565 # minecraft

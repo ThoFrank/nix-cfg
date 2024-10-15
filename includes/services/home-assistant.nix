@@ -70,6 +70,10 @@
       }
     ];
   };
-  networking.firewall.allowedTCPPorts = [ config.services.zigbee2mqtt.settings.frontend.port ]
+  networking.firewall.allowedTCPPorts = [
+    config.services.home-assistant.config.http.server_port
+    config.services.zigbee2mqtt.settings.frontend.port
+  ]
   ++ builtins.map (x: x.port) config.services.mosquitto.listeners;
+
 }

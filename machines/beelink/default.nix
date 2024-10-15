@@ -8,6 +8,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      ../../includes/services/home-assistant.nix
     ];
 
   # Bootloader.
