@@ -165,6 +165,8 @@
       "/var/lib/mosquitto"
       "/var/lib/hass"
       "/var/lib/zigbee2mqtt"
+
+      "/.secret"
     ];
     files = [
       "/etc/machine-id"
