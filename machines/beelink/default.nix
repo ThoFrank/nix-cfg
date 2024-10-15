@@ -161,6 +161,10 @@
       "/var/lib/nixos"
       "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
+
+      "/var/lib/mosquitto"
+      "/var/lib/hass"
+      "/var/lib/zigbee2mqtt"
     ];
     files = [
       "/etc/machine-id"
