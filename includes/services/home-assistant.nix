@@ -11,7 +11,9 @@
           ikea_provider = true;
         };
       };
-      homekit = {};
+      homekit = {
+        port = 21063;
+      };
       "automation ui" = "!include automations.yaml";
       switch = {
         platform = "flux";
@@ -72,6 +74,7 @@
   };
   networking.firewall.allowedTCPPorts = [
     config.services.home-assistant.config.http.server_port
+    config.services.home-assistant.config.homekit.port
     config.services.zigbee2mqtt.settings.frontend.port
   ]
   ++ builtins.map (x: x.port) config.services.mosquitto.listeners;
