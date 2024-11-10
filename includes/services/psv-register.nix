@@ -50,7 +50,7 @@
   };
   services.psv-registration-indoor = {
     enable = true;
-    smtp-password-file = "/.secret/psv.smtp.pass";
+    config_files = ["/.secret/psv-register.toml"];
     nginx = {
       enable = true;
       hostNames = [ "amindoor.bogen-psv.de" "indoor.psv-register.franks-im-web.de" ];
@@ -60,19 +60,17 @@
       mail_server = {
         smtp_server = "alfa3023.alfahosting-server.de";
         smtp_username = "web1218p6";
-        smtp_password = "t0p_secret";
       };
       mail_message = {
         sender_name = "Thomas Frank";
         sender_address = "sport@bogen-psv.de";
-        subject = "Anmeldebestätigung PSV Indoor";
       };
     };
 
   };
   services.psv-registration-vm-halle = {
     enable = true;
-    smtp-password-file = "/.secret/psv.smtp.pass";
+    config_files = ["/.secret/psv-register.toml"];
     nginx = {
       enable = true;
       hostNames = [ "amha.bogen-psv.de" "halle.psv-register.franks-im-web.de" ];
@@ -82,12 +80,10 @@
       mail_server = {
         smtp_server = "alfa3023.alfahosting-server.de";
         smtp_username = "web1218p6";
-        smtp_password = "t0p_secret";
       };
       mail_message = {
         sender_name = "Thomas Frank";
         sender_address = "sport@bogen-psv.de";
-        subject = "Anmeldebestätigung Vereinsmeisterschaft Halle";
       };
     };
 
