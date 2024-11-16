@@ -47,6 +47,7 @@
         port = "/dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2653212-if00";
       };
       advanced.adapter_delay = 200;
+      availability = true;
       homeassistant = true;
       mqtt = {
         server = "mqtt://localhost";
