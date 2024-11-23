@@ -4,7 +4,7 @@
   nix = {
     gc.automatic = true;
     settings.auto-optimise-store = !pkgs.stdenv.isDarwin;
-    package = pkgs.nixFlakes;
+    package = pkgs.nixVersions.stable;
     extraOptions = ''
       experimental-features = nix-command flakes
     '';

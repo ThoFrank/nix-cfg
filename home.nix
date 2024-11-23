@@ -123,7 +123,7 @@ vars: { config, pkgs, lib, ... }:
     extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       justusadam.language-haskell
-      matklad.rust-analyzer
+      rust-lang.rust-analyzer
       ms-azuretools.vscode-docker
       ms-vscode-remote.remote-ssh
     ];

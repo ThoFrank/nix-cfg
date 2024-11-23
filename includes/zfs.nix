@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 {
-  boot.kernelPackages = config.boot.zfs.package.latestCompatibleLinuxPackages;
+  boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [ "zfs" ];
   networking.hostId = "d5946d97";
   services.zfs.autoScrub.enable = true;
