@@ -143,8 +143,6 @@ vars: { config, pkgs, lib, ... }:
         "rust"
         "man"
         "thefuck"
-        "fd"
-        "ripgrep"
       ];
       theme = "robbyrussell";
     };
