@@ -152,6 +152,7 @@ vars: { config, pkgs, lib, ... }:
       fi
     '';
   };
+  programs.carapace.enable = true;
   programs.direnv = {
     enable = true;
     nix-direnv = {
