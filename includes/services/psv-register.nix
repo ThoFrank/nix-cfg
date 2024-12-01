@@ -69,7 +69,7 @@
 
   };
   services.psv-registration-vm-halle = {
-    enable = true;
+    enable = false;
     config_files = ["/.secret/psv-register.toml"];
     nginx = {
       enable = true;
