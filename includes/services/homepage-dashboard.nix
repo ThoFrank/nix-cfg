@@ -85,8 +85,8 @@
           {
             "Router" = {
               href = "http://192.168.2.1";
-              description = "Telekom router web interface";
-              icon = "telekom";
+              description = "Fritzbox router web interface";
+              icon = "avmfritzbox";
             };
           }{
             "Octoprint" = {
