@@ -31,6 +31,7 @@ vars: { config, pkgs, lib, ... }:
     pkgs.btop
     pkgs.sqlitebrowser
     pkgs.gh
+    pkgs.devenv
 
     (pkgs.nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
   ]
