@@ -48,7 +48,7 @@ vars: { config, pkgs, lib, ... }:
     pkgs.libiconv
     pkgs.nixos-shell
     pkgs.iterm2
-    pkgs.texlive.combined.scheme-full
+    pkgs.texliveFull
   ];
 
   programs.ssh = {
