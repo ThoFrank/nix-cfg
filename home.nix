@@ -162,6 +162,7 @@ vars: { config, pkgs, lib, ... }:
   };
   programs.helix = {
     enable = true;
+    package = pkgs.unstable.helix;
     defaultEditor = true;
     settings = {
       theme = "onedark";

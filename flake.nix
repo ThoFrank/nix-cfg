@@ -117,6 +117,7 @@
       modules = [
         ./includes/common
         ./machines/Thomas-MacBook-Pro.nix
+        {nixpkgs.overlays = [self.overlays.addUnstable];}
         home-manager.darwinModules.home-manager
         {_module.args.var = {username = "thomas"; homedir = "/Users/thomas";};}
       ];

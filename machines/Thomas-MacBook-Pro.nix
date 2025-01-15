@@ -9,6 +9,19 @@
   # Auto upgrade nix package and the daemon service.
   services.nix-daemon.enable = true;
 
+  nix = {
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+      maxJobs = 4;
+      config.virtualisation = {
+        cores = 4;
+        darwin-builder.memorySize = 8 * 1024;
+      };
+    };
+    settings.trusted-users = [ vars.username ];
+  };
+
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina
   # programs.fish.enable = true;
@@ -17,7 +30,10 @@
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
 
-  users.users.${vars.username}.home = vars.homedir;
+  users.users.${vars.username} = {
+    home = vars.homedir;
+    shell = pkgs.zsh;
+  };
   home-manager.users.${vars.username} = import ../home.nix vars;
 
   home-manager.useGlobalPkgs = true;
