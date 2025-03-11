@@ -20,6 +20,7 @@
       ../../includes/services/homepage-dashboard.nix
       ../../includes/services/mealie.nix
       ../../includes/services/ddclient.nix
+      ../../includes/services/psv-cloud-sync.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
