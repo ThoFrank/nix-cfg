@@ -3,6 +3,7 @@
   imports = [ ];
   services.mysql = {
     enable = true;
+    dataDir = "/mnt/tank/services/nextcloud/db";
     package = pkgs.mariadb;
     ensureDatabases = [ config.services.nextcloud.config.dbname ];
     ensureUsers = [
@@ -21,6 +22,6 @@
     singleTransaction = true;
     user = config.services.nextcloud.config.dbuser;
     databases = [ config.services.nextcloud.config.dbname ];
-    location = "/mnt/tank/nextcloud/db_backup";
+    location = "/mnt/tank/services/nextcloud/db_backup";
   };
 }

@@ -49,7 +49,7 @@
 
   };
   services.psv-registration-indoor = {
-    enable = true;
+    enable = false;
     config_files = ["/.secret/psv-register.toml"];
     nginx = {
       enable = true;

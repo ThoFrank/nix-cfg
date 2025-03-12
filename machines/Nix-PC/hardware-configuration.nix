@@ -29,305 +29,305 @@
       fsType = "vfat";
     };
 
-  fileSystems."/mnt/tank" =
-    { device = "tank";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank" =
+#     { device = "tank";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/nextcloud" =
-    { device = "tank/nextcloud";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/nextcloud" =
+#     { device = "tank/nextcloud";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Backup" =
-    { device = "tank/Backup";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Backup" =
+#     { device = "tank/Backup";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Shared" =
-    { device = "tank/Shared";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Shared" =
+#     { device = "tank/Shared";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage" =
-    { device = "tank/iocage";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage" =
+#     { device = "tank/iocage";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Bilder-Thomas" =
-    { device = "tank/Bilder-Thomas";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Bilder-Thomas" =
+#     { device = "tank/Bilder-Thomas";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Share_Public" =
-    { device = "tank/Share_Public";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Share_Public" =
+#     { device = "tank/Share_Public";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Backup/TM" =
-    { device = "tank/Backup/TM";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Backup/TM" =
+#     { device = "tank/Backup/TM";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Nextcloud" =
-#    { device = "tank/Backup/Nextcloud";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Nextcloud" =
+# #    { device = "tank/Backup/Nextcloud";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/images" =
-    { device = "tank/iocage/images";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/images" =
+#     { device = "tank/iocage/images";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/pxeboot" =
-    { device = "tank/pxeboot";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/pxeboot" =
+#     { device = "tank/pxeboot";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails" =
-    { device = "tank/iocage/jails";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails" =
+#     { device = "tank/iocage/jails";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/Filme" =
-    { device = "tank/Filme";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/Filme" =
+#     { device = "tank/Filme";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/templates" =
-    { device = "tank/iocage/templates";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/templates" =
+#     { device = "tank/iocage/templates";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Thomas" =
-#    { device = "tank/Backup/Thomas";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Thomas" =
+# #    { device = "tank/Backup/Thomas";
+# #      fsType = "zfs";
+# #    };
 
-#  fileSystems."/mnt/tank/Backup/Rudi" =
-#    { device = "tank/Backup/Rudi";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Rudi" =
+# #    { device = "tank/Backup/Rudi";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/jails/NginxProxy" =
-    { device = "tank/iocage/jails/NginxProxy";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/NginxProxy" =
+#     { device = "tank/iocage/jails/NginxProxy";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download" =
-    { device = "tank/iocage/download";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download" =
+#     { device = "tank/iocage/download";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/.bhyve_containers" =
-    { device = "tank/.bhyve_containers";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/.bhyve_containers" =
+#     { device = "tank/.bhyve_containers";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/log" =
-    { device = "tank/iocage/log";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/log" =
+#     { device = "tank/iocage/log";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/plex" =
-    { device = "tank/iocage/jails/plex";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/plex" =
+#     { device = "tank/iocage/jails/plex";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/spdyn" =
-    { device = "tank/iocage/jails/spdyn";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/spdyn" =
+#     { device = "tank/iocage/jails/spdyn";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Lukas" =
-#    { device = "tank/Backup/Lukas";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Lukas" =
+# #    { device = "tank/Backup/Lukas";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/jails/Nextcloud" =
-    { device = "tank/iocage/jails/Nextcloud";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Nextcloud" =
+#     { device = "tank/iocage/jails/Nextcloud";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Mediawiki" =
-    { device = "tank/iocage/jails/Mediawiki";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Mediawiki" =
+#     { device = "tank/iocage/jails/Mediawiki";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Heimdall" =
-    { device = "tank/iocage/jails/Heimdall";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Heimdall" =
+#     { device = "tank/iocage/jails/Heimdall";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/rust_playground" =
-    { device = "tank/iocage/jails/rust_playground";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/rust_playground" =
+#     { device = "tank/iocage/jails/rust_playground";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/spdyn/root" =
-    { device = "tank/iocage/jails/spdyn/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/spdyn/root" =
+#     { device = "tank/iocage/jails/spdyn/root";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Thomas/Desktop" =
-#    { device = "tank/Backup/Thomas/Desktop";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Thomas/Desktop" =
+# #    { device = "tank/Backup/Thomas/Desktop";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/download/12.1-RELEASE" =
-    { device = "tank/iocage/download/12.1-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/12.1-RELEASE" =
+#     { device = "tank/iocage/download/12.1-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download/12.2-RELEASE" =
-    { device = "tank/iocage/download/12.2-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/12.2-RELEASE" =
+#     { device = "tank/iocage/download/12.2-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Speedtest" =
-    { device = "tank/iocage/jails/Speedtest";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Speedtest" =
+#     { device = "tank/iocage/jails/Speedtest";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download/11.2-RELEASE" =
-    { device = "tank/iocage/download/11.2-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/11.2-RELEASE" =
+#     { device = "tank/iocage/download/11.2-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Heimdall/root" =
-    { device = "tank/iocage/jails/Heimdall/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Heimdall/root" =
+#     { device = "tank/iocage/jails/Heimdall/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Nextcloud/root" =
-    { device = "tank/iocage/jails/Nextcloud/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Nextcloud/root" =
+#     { device = "tank/iocage/jails/Nextcloud/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/plex/root" =
-    { device = "tank/iocage/jails/plex/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/plex/root" =
+#     { device = "tank/iocage/jails/plex/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download/11.3-RELEASE" =
-    { device = "tank/iocage/download/11.3-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/11.3-RELEASE" =
+#     { device = "tank/iocage/download/11.3-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/mineos" =
-    { device = "tank/iocage/jails/mineos";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/mineos" =
+#     { device = "tank/iocage/jails/mineos";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Thomas/TimeMachine" =
-#    { device = "tank/Backup/Thomas/TimeMachine";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Thomas/TimeMachine" =
+# #    { device = "tank/Backup/Thomas/TimeMachine";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/jails/NginxProxy/root" =
-    { device = "tank/iocage/jails/NginxProxy/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/NginxProxy/root" =
+#     { device = "tank/iocage/jails/NginxProxy/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/rust_playground/root" =
-    { device = "tank/iocage/jails/rust_playground/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/rust_playground/root" =
+#     { device = "tank/iocage/jails/rust_playground/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases" =
-    { device = "tank/iocage/releases";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases" =
+#     { device = "tank/iocage/releases";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Speedtest/root" =
-    { device = "tank/iocage/jails/Speedtest/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Speedtest/root" =
+#     { device = "tank/iocage/jails/Speedtest/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/mineos/root" =
-    { device = "tank/iocage/jails/mineos/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/mineos/root" =
+#     { device = "tank/iocage/jails/mineos/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download/12.3-RELEASE" =
-    { device = "tank/iocage/download/12.3-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/12.3-RELEASE" =
+#     { device = "tank/iocage/download/12.3-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.2-RELEASE" =
-    { device = "tank/iocage/releases/11.2-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.2-RELEASE" =
+#     { device = "tank/iocage/releases/11.2-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.4-RELEASE" =
-    { device = "tank/iocage/releases/11.4-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.4-RELEASE" =
+#     { device = "tank/iocage/releases/11.4-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/download/11.4-RELEASE" =
-    { device = "tank/iocage/download/11.4-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/download/11.4-RELEASE" =
+#     { device = "tank/iocage/download/11.4-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/12.1-RELEASE" =
-    { device = "tank/iocage/releases/12.1-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.1-RELEASE" =
+#     { device = "tank/iocage/releases/12.1-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/jails/Mediawiki/root" =
-    { device = "tank/iocage/jails/Mediawiki/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/jails/Mediawiki/root" =
+#     { device = "tank/iocage/jails/Mediawiki/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/12.3-RELEASE" =
-    { device = "tank/iocage/releases/12.3-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.3-RELEASE" =
+#     { device = "tank/iocage/releases/12.3-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.3-RELEASE" =
-    { device = "tank/iocage/releases/11.3-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.3-RELEASE" =
+#     { device = "tank/iocage/releases/11.3-RELEASE";
+#       fsType = "zfs";
+#     };
 
-#  fileSystems."/mnt/tank/Backup/Lukas/Thor" =
-#    { device = "tank/Backup/Lukas/Thor";
-#      fsType = "zfs";
-#    };
+# #  fileSystems."/mnt/tank/Backup/Lukas/Thor" =
+# #    { device = "tank/Backup/Lukas/Thor";
+# #      fsType = "zfs";
+# #    };
 
-  fileSystems."/mnt/tank/iocage/releases/12.2-RELEASE" =
-    { device = "tank/iocage/releases/12.2-RELEASE";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.2-RELEASE" =
+#     { device = "tank/iocage/releases/12.2-RELEASE";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/12.2-RELEASE/root" =
-    { device = "tank/iocage/releases/12.2-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.2-RELEASE/root" =
+#     { device = "tank/iocage/releases/12.2-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/12.1-RELEASE/root" =
-    { device = "tank/iocage/releases/12.1-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.1-RELEASE/root" =
+#     { device = "tank/iocage/releases/12.1-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.4-RELEASE/root" =
-    { device = "tank/iocage/releases/11.4-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.4-RELEASE/root" =
+#     { device = "tank/iocage/releases/11.4-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.3-RELEASE/root" =
-    { device = "tank/iocage/releases/11.3-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.3-RELEASE/root" =
+#     { device = "tank/iocage/releases/11.3-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/11.2-RELEASE/root" =
-    { device = "tank/iocage/releases/11.2-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/11.2-RELEASE/root" =
+#     { device = "tank/iocage/releases/11.2-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
-  fileSystems."/mnt/tank/iocage/releases/12.3-RELEASE/root" =
-    { device = "tank/iocage/releases/12.3-RELEASE/root";
-      fsType = "zfs";
-    };
+#   fileSystems."/mnt/tank/iocage/releases/12.3-RELEASE/root" =
+#     { device = "tank/iocage/releases/12.3-RELEASE/root";
+#       fsType = "zfs";
+#     };
 
   swapDevices =
     [ { device = "/dev/disk/by-uuid/601ad25a-c708-4036-b74e-7d6b8f828317"; }

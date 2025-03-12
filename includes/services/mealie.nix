@@ -17,4 +17,12 @@
   networking.firewall.allowedTCPPorts = [
     config.services.mealie.port
   ];
+
+  services.nginx.virtualHosts."rezepte.franks-im-web.de" = {
+    forceSSL = true;
+    enableACME = true;
+    locations."/" = {
+      proxyPass = "http://localhost:${builtins.toString config.services.mealie.port}";
+    };
+  };
 }

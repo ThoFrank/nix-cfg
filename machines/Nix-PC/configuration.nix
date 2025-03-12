@@ -9,18 +9,18 @@
     [
       # ./monitoring
       ../../includes/zfs.nix
-      ../../includes/services/nginx.nix
-      ../../includes/services/letsencrypt.nix
-      ../../includes/services/nextcloud.nix
-      ../../includes/services/mariadb.nix
-      ../../includes/services/samba.nix
-      ../../includes/services/plex.nix
-      ../../includes/services/minidlna.nix
+      # ../../includes/services/nginx.nix
+      # ../../includes/services/letsencrypt.nix
+      # ../../includes/services/nextcloud.nix
+      # ../../includes/services/mariadb.nix
+      # ../../includes/services/samba.nix
+      # ../../includes/services/plex.nix
+      # ../../includes/services/minidlna.nix
       ../../includes/services/psv-register.nix
-      ../../includes/services/homepage-dashboard.nix
-      ../../includes/services/mealie.nix
-      ../../includes/services/ddclient.nix
-      ../../includes/services/psv-cloud-sync.nix
+      # ../../includes/services/homepage-dashboard.nix
+      # ../../includes/services/mealie.nix
+      # ../../includes/services/ddclient.nix
+      # ../../includes/services/psv-cloud-sync.nix
     ];
 
   # Use the systemd-boot EFI boot loader.
@@ -106,9 +106,9 @@
       hashedPassword = "!";
       #home.packages = [ pkgs.atool pkgs.httpie ];
     };
-    nextcloud = {
-      extraGroups = [ "bilder" ];
-    };
+    # nextcloud = {
+    #   extraGroups = [ "bilder" ];
+    # };
     tobias = {
       isNormalUser = true;
       createHome = false;

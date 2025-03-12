@@ -2,12 +2,13 @@
 {
   boot.kernelPackages = pkgs.linuxPackages;
   boot.supportedFilesystems = [ "zfs" ];
-  networking.hostId = "d5946d97";
+  # networking.hostId = "d5946d97";
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   boot.zfs.forceImportAll = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
-  boot.zfs.extraPools = [ "backup" ];
+  boot.zfs.extraPools = [ "tank" ];
+  # boot.zfs.extraPools = [ "backup" ];
   
   # auto snapshots
   users.users.sanoid = {
@@ -17,7 +18,8 @@
   };
   users.groups.sanoid = {};
   services.sanoid = {
-    enable = true;
+    # enable = true;
+    enable = false;
     templates = {
       movies = {
         daily = 30;
@@ -62,7 +64,8 @@
   
   # auto backup
   services.syncoid = {
-    enable = true;
+    # enable = true;
+    enable = false;
     interval = "daily";
     commands = {
       pi = {

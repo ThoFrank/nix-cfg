@@ -6,9 +6,16 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+
+      ./nginx.nix
+      ../../includes/services/letsencrypt.nix
       ../../includes/services/home-assistant.nix
+      ../../includes/services/mealie.nix
+      ../../includes/services/nextcloud.nix
+      ../../includes/services/mariadb.nix
+      ../../includes/zfs.nix
     ];
 
   # Bootloader.
@@ -167,6 +174,8 @@
       "/var/lib/mosquitto"
       "/var/lib/hass"
       "/var/lib/zigbee2mqtt"
+
+      "/var/lib/acme"
 
       "/.secret"
     ];
