@@ -15,6 +15,8 @@
       ../../includes/services/mealie.nix
       ../../includes/services/nextcloud.nix
       ../../includes/services/mariadb.nix
+      ../../includes/services/ddclient.nix
+      ../../includes/services/samba.nix
       ../../includes/zfs.nix
     ];
 
@@ -176,6 +178,7 @@
       "/var/lib/zigbee2mqtt"
 
       "/var/lib/acme"
+      "/var/lib/samba"
 
       "/.secret"
     ];
