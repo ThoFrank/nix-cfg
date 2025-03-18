@@ -40,13 +40,13 @@
   };
   services.zigbee2mqtt = {
     enable = true;
+    package = pkgs.unstable.zigbee2mqtt_2;
     settings = {
       permit_join = false;
       serial = {
         adapter = "deconz";
         port = "/dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2653212-if00";
       };
-      advanced.adapter_delay = 200;
       availability = true;
       homeassistant = true;
       mqtt = {
@@ -55,6 +55,13 @@
         password = "!/.secret/mosquittoZM.yaml password";
       };
       frontend.port = 8080;
+      advanced = {
+        homeassistant_legacy_entity_attributes = false;
+        homeassistant_legacy_triggers = false;
+        legacy_api = false;
+        legacy_availability_payload = false;
+      };
+      device_options.legacy = false;
     };
   };
   services.mosquitto = {
@@ -78,6 +85,7 @@
     config.services.home-assistant.config.http.server_port
     config.services.home-assistant.config.homekit.port
     config.services.zigbee2mqtt.settings.frontend.port
+    1400 # Sonos push updates
   ]
   ++ builtins.map (x: x.port) config.services.mosquitto.listeners;
 

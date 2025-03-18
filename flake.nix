@@ -81,8 +81,14 @@
       };
       modules = [
         {
-          disabledModules = [ "services/web-apps/mealie.nix" ];
-          imports = [ "${inputs.unstable}/nixos/modules/services/web-apps/mealie.nix" ];
+          disabledModules = [
+            "services/web-apps/mealie.nix"
+            "services/home-automation/zigbee2mqtt.nix"
+          ];
+          imports = [
+            "${inputs.unstable}/nixos/modules/services/web-apps/mealie.nix"
+            "${inputs.unstable}/nixos/modules/services/home-automation/zigbee2mqtt.nix"
+          ];
         }
         {nixpkgs.overlays = [self.overlays.addUnstable];}
         nixos-hardware.nixosModules.common-cpu-intel
