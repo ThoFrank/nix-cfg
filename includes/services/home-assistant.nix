@@ -44,8 +44,9 @@
     settings = {
       permit_join = false;
       serial = {
-        adapter = "deconz";
-        port = "/dev/serial/by-id/usb-dresden_elektronik_ingenieurtechnik_GmbH_ConBee_II_DE2653212-if00";
+        adapter = "ember";
+        rtscts = false;
+        port = "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_701523cb4c4eef11906446b3174bec31-if00-port0";
       };
       availability = true;
       homeassistant = true;
@@ -60,6 +61,7 @@
         homeassistant_legacy_triggers = false;
         legacy_api = false;
         legacy_availability_payload = false;
+        # transmit_power = 20;
       };
       device_options.legacy = false;
     };
