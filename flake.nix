@@ -83,10 +83,12 @@
         {
           disabledModules = [
             "services/web-apps/mealie.nix"
+            "services/home-automation/home-assistant.nix"
             "services/home-automation/zigbee2mqtt.nix"
           ];
           imports = [
             "${inputs.unstable}/nixos/modules/services/web-apps/mealie.nix"
+            "${inputs.unstable}/nixos/modules/services/home-automation/home-assistant.nix"
             "${inputs.unstable}/nixos/modules/services/home-automation/zigbee2mqtt.nix"
           ];
         }

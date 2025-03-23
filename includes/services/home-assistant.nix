@@ -3,6 +3,7 @@
   imports = [ ];
   services.home-assistant = {
     enable = true;
+    package = pkgs.unstable.home-assistant;
     config = {
       default_config = {};
       http = {server_port = 8123;};
@@ -36,7 +37,7 @@
         };
       };
     };
-    extraComponents = [ "mqtt" "webostv" "sonos" "apple_tv" "homekit_controller" "thread" ];
+    extraComponents = [ "mqtt" "webostv" "sonos" "apple_tv" "homekit_controller" "thread" "roborock" ];
   };
   services.zigbee2mqtt = {
     enable = true;
