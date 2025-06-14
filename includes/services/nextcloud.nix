@@ -41,5 +41,5 @@
   };
 
   users.users.nextcloud.extraGroups = [ "Bilder" ];
-  environment.systemPackages = with pkgs; [ nodejs_20 libtensorflow ffmpeg ];
+  environment.systemPackages = with pkgs; [ nodejs_20 /*libtensorflow*/ ffmpeg ];
 }

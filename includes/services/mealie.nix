@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 {
   services.mealie = {
-    enable = true;
+    # enable = true;
     package = pkgs.unstable.mealie;
   };
 

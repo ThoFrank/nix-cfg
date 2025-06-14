@@ -31,9 +31,9 @@ vars: { config, pkgs, lib, ... }:
     pkgs.btop
     pkgs.sqlitebrowser
     pkgs.gh
-    pkgs.devenv
+    # pkgs.devenv
 
-    (pkgs.nerdfonts.override { fonts = [ "ComicShannsMono" ]; })
+    pkgs.nerd-fonts.comic-shanns-mono
   ]
   ++ lib.optionals (pkgs.stdenv.isLinux)
     [
@@ -121,7 +121,7 @@ vars: { config, pkgs, lib, ... }:
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
-    extensions = with pkgs.vscode-extensions; [
+    profiles.default.extensions = with pkgs.vscode-extensions; [
       jnoortheen.nix-ide
       justusadam.language-haskell
       rust-lang.rust-analyzer
@@ -147,7 +147,7 @@ vars: { config, pkgs, lib, ... }:
       ];
       theme = "robbyrussell";
     };
-    initExtra = ''
+    initContent = ''
       if [[ -n "$PS1" ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
         tmux attach-session -t ssh_tmux || tmux new-session -s ssh_tmux
       fi
