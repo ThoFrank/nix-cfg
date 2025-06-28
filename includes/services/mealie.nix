@@ -1,16 +1,10 @@
 { config, pkgs, ... }:
 {
-  services.mealie = {
-    # enable = true;
-    package = pkgs.unstable.mealie;
-  };
-
-  # move data to tank
-  fileSystems."/var/lib/private/mealie" = {
-    device = "/mnt/tank/services/mealie";
-    options = [
-      "bind"
-      "x-systemd.requires=zfs-mount.service"
+  virtualisation.oci-containers.containers.mealie = {
+    image = "ghcr.io/mealie-recipes/mealie:v2.8.0";
+    ports = ["127.0.0.1:${toString config.services.mealie.port}:${toString config.services.mealie.port}"];
+    volumes = [
+      "/mnt/tank/services/mealie/:/app/data/"
     ];
   };
 
