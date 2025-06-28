@@ -12,6 +12,7 @@
       ./nginx.nix
       ../../includes/services/letsencrypt.nix
       ../../includes/services/home-assistant.nix
+      ../../includes/services/psv-cloud-sync.nix
       ../../includes/services/mealie.nix
       ../../includes/services/nextcloud.nix
       ../../includes/services/mariadb.nix
@@ -86,7 +87,7 @@
   services.printing.enable = true;
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -132,6 +133,7 @@
   #  wget
     helix
     tmux
+    gparted
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -146,6 +148,8 @@
 
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
+  services.openssh.openFirewall = true;
+  services.openssh.settings.PasswordAuthentication = false;
   services.fail2ban.enable = true;
 
   # Open ports in the firewall.

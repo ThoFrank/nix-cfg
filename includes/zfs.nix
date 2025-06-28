@@ -8,7 +8,6 @@
   boot.zfs.forceImportAll = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
   boot.zfs.extraPools = [ "tank" ];
-  # boot.zfs.extraPools = [ "backup" ];
   
   # auto snapshots
   users.users.sanoid = {
@@ -18,8 +17,7 @@
   };
   users.groups.sanoid = {};
   services.sanoid = {
-    # enable = true;
-    enable = false;
+    enable = true;
     templates = {
       movies = {
         daily = 30;
@@ -58,14 +56,17 @@
         use_template = [ "data" ];
         recursive = true;
       };
+      "tank/psv_vm_backup" = {
+        use_template = [ "data" ];
+        recursive = true;
+      };
     };
     extraArgs = [ "--cache-dir" "/var/cache/sanoid" "--verbose" "--force-update" ];
   };
   
   # auto backup
   services.syncoid = {
-    # enable = true;
-    enable = false;
+    enable = true;
     interval = "daily";
     commands = {
       pi = {
@@ -76,4 +77,6 @@
     };
     commonArgs = [ "--no-sync-snap" ];
   };
+
+  services.smartd.enable = true;
 }
