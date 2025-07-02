@@ -31,6 +31,7 @@ vars: { config, pkgs, lib, ... }:
     pkgs.btop
     pkgs.sqlitebrowser
     pkgs.gh
+    pkgs.nil
     # pkgs.devenv
 
     pkgs.nerd-fonts.comic-shanns-mono
