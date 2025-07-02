@@ -6,12 +6,10 @@
       pkgs.alacritty
     ];
 
-  # Auto upgrade nix package and the daemon service.
-  services.nix-daemon.enable = true;
-
   nix = {
+    enable = true;
     linux-builder = {
-      enable = true;
+      # enable = true;
       ephemeral = true;
       maxJobs = 4;
       config.virtualisation = {
@@ -37,7 +35,7 @@
   home-manager.users.${vars.username} = import ../home.nix vars;
 
   home-manager.useGlobalPkgs = true;
-  security.pam.enableSudoTouchIdAuth = true;
+  security.pam.services.sudo_local.touchIdAuth = true;
 
   system.activationScripts.applications.text = let
     env = pkgs.buildEnv {
