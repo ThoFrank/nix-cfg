@@ -122,17 +122,19 @@ vars: { config, pkgs, lib, ... }:
   programs.vscode = {
     enable = true;
     package = pkgs.vscode;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
-      jnoortheen.nix-ide
-      justusadam.language-haskell
-      rust-lang.rust-analyzer
-      ms-azuretools.vscode-docker
-      ms-vscode-remote.remote-ssh
-    ];
-    userSettings = {
-      "security.workspace.trust.enabled" = false;
-      "update.mode" = "none";
-      "terminal.integrated.persistentSessionReviveProcess" = "never";
+    profiles.default = {
+      extensions = with pkgs.vscode-extensions; [
+        jnoortheen.nix-ide
+        justusadam.language-haskell
+        rust-lang.rust-analyzer
+        ms-azuretools.vscode-docker
+        ms-vscode-remote.remote-ssh
+      ];
+      userSettings = {
+        "security.workspace.trust.enabled" = false;
+        "update.mode" = "none";
+        "terminal.integrated.persistentSessionReviveProcess" = "never";
+      };
     };
   };
   programs.zsh = {
