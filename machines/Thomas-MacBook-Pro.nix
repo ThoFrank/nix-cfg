@@ -5,6 +5,7 @@
       pkgs.vim
       pkgs.alacritty
     ];
+  environment.shells = [ pkgs.zsh ];
 
   nix = {
     enable = true;
