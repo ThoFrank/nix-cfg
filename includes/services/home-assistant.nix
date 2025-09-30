@@ -50,7 +50,6 @@
         port = "/dev/serial/by-id/usb-Itead_Sonoff_Zigbee_3.0_USB_Dongle_Plus_V2_701523cb4c4eef11906446b3174bec31-if00-port0";
       };
       availability = true;
-      homeassistant = true;
       mqtt = {
         server = "mqtt://localhost";
         user = "zigbee2mqtt";
