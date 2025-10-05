@@ -16,6 +16,7 @@
       ../../includes/services/mealie.nix
       ../../includes/services/nextcloud.nix
       ../../includes/services/mariadb.nix
+      ../../includes/services/minecraft.nix
       ../../includes/services/ddclient.nix
       ../../includes/services/samba.nix
       ../../includes/zfs.nix
@@ -180,6 +181,7 @@
       "/var/lib/mosquitto"
       "/var/lib/hass"
       "/var/lib/zigbee2mqtt"
+      config.services.minecraft-server.dataDir
 
       "/var/lib/acme"
       "/var/lib/samba"
