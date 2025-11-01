@@ -10,14 +10,15 @@
       ./hardware-configuration.nix
 
       ./nginx.nix
-      ../../includes/services/letsencrypt.nix
-      ../../includes/services/home-assistant.nix
-      ../../includes/services/psv-cloud-sync.nix
-      ../../includes/services/mealie.nix
-      ../../includes/services/nextcloud.nix
-      ../../includes/services/mariadb.nix
-      ../../includes/services/minecraft.nix
       ../../includes/services/ddclient.nix
+      ../../includes/services/home-assistant.nix
+      ../../includes/services/jellyfin.nix
+      ../../includes/services/letsencrypt.nix
+      ../../includes/services/mariadb.nix
+      ../../includes/services/mealie.nix
+      ../../includes/services/minecraft.nix
+      ../../includes/services/nextcloud.nix
+      ../../includes/services/psv-cloud-sync.nix
       ../../includes/services/samba.nix
       ../../includes/zfs.nix
     ];
@@ -181,6 +182,7 @@
       "/var/lib/mosquitto"
       "/var/lib/hass"
       "/var/lib/zigbee2mqtt"
+      config.services.jellyfin.dataDir
       config.services.minecraft-server.dataDir
 
       "/var/lib/acme"
