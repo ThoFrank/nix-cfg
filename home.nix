@@ -21,7 +21,6 @@ vars: { config, pkgs, lib, ... }:
 
   home.packages = [
     pkgs.rustup
-    pkgs.thefuck
     pkgs.htop
     pkgs.nixpkgs-review
     pkgs.python3
@@ -54,6 +53,7 @@ vars: { config, pkgs, lib, ... }:
 
   programs.ssh = {
     enable = true;
+    enableDefaultConfig = false;
     matchBlocks = {
       "github.com" = {
         hostname = "github.com";
@@ -98,8 +98,12 @@ vars: { config, pkgs, lib, ... }:
   };
   programs.git = {
     enable = true;
-    userName = "Thomas Frank";
-    userEmail = "thomas@franks-im-web.de";
+    settings = {
+      user = {
+        name = "Thomas Frank";
+        email = "thomas@franks-im-web.de";
+      };
+    };
   };
 
   programs.tmux = {
@@ -151,7 +155,6 @@ vars: { config, pkgs, lib, ... }:
         "python"
         "rust"
         "man"
-        "thefuck"
       ];
       theme = "robbyrussell";
     };
