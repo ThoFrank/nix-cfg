@@ -19,6 +19,7 @@
     };
 
     impermanence.url = "github:nix-community/impermanence";
+    determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     
     psv-register-wa = {
       url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
@@ -118,8 +119,8 @@
         inputs.nixos-generators.nixosModules.all-formats
       ];
     };
-    darwinConfigurations."Thomas-MacBook-Pro" = inputs.nix-darwin.lib.darwinSystem {
-      system = "x86_64-darwin";
+    darwinConfigurations."MacBook-Pro-von-Thomas" = inputs.nix-darwin.lib.darwinSystem {
+      system = "aarch64-darwin";
       specialArgs = {
         vars = {
           username = "thomas";
@@ -127,11 +128,13 @@
         };
       };
       modules = [
+        inputs.determinate.darwinModules.default
         ./includes/common
         ./machines/Thomas-MacBook-Pro.nix
         {nixpkgs.overlays = [self.overlays.addUnstable];}
         home-manager.darwinModules.home-manager
         {_module.args.var = {username = "thomas"; homedir = "/Users/thomas";};}
+        {determinateNix.enable = true;}
       ];
     };
   };

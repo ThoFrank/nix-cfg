@@ -55,6 +55,9 @@ vars: { config, pkgs, lib, ... }:
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
+      "*" = lib.mkIf (pkgs.stdenv.isDarwin) {
+        identityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+      };
       "github.com" = {
         hostname = "github.com";
         user = "git";
@@ -102,7 +105,13 @@ vars: { config, pkgs, lib, ... }:
       user = {
         name = "Thomas Frank";
         email = "thomas@franks-im-web.de";
+        signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcak+J9h7SIZB/+USe5pZaGkRZWf+eUa7jYDT7f71a3";
       };
+      gpg = {
+        format = "ssh";
+        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+      };
+      commit.gpgsign = true;
     };
   };
 

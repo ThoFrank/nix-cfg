@@ -2,7 +2,7 @@
 
 {
   nix = {
-    gc.automatic = true;
+    # gc.automatic = true;
     settings.auto-optimise-store = !pkgs.stdenv.isDarwin;
     package = pkgs.nixVersions.stable;
     extraOptions = ''

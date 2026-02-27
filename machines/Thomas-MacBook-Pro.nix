@@ -8,17 +8,17 @@
   environment.shells = [ pkgs.zsh ];
 
   nix = {
-    enable = true;
-    linux-builder = {
-      # enable = true;
-      ephemeral = true;
-      maxJobs = 4;
-      config.virtualisation = {
-        cores = 4;
-        darwin-builder.memorySize = 8 * 1024;
-      };
-    };
-    settings.trusted-users = [ vars.username ];
+    enable = false;
+    # linux-builder = {
+    #   # enable = true;
+    #   ephemeral = true;
+    #   maxJobs = 4;
+    #   config.virtualisation = {
+    #     cores = 4;
+    #     darwin-builder.memorySize = 8 * 1024;
+    #   };
+    # };
+    # settings.trusted-users = [ vars.username ];
   };
 
   # Create /etc/bashrc that loads the nix-darwin environment.
