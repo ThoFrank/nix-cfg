@@ -20,6 +20,11 @@
     # };
     # settings.trusted-users = [ vars.username ];
   };
+  determinateNix = {
+    enable = true;
+    customSettings.experimental-features = "nix-command flakes pipe-operators";
+  };
+
 
   # Create /etc/bashrc that loads the nix-darwin environment.
   programs.zsh.enable = true; # default shell on catalina

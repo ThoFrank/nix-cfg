@@ -76,7 +76,6 @@
         {nixpkgs.overlays = [self.overlays.addUnstable];}
         home-manager.darwinModules.home-manager
         {_module.args.var = {username = "thomas"; homedir = "/Users/thomas";};}
-        {determinateNix.enable = true;}
       ];
     };
   };
