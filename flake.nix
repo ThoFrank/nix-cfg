@@ -21,56 +21,15 @@
     impermanence.url = "github:nix-community/impermanence";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
     
-    psv-register-wa = {
-      url = "github:PSV-Bogenschiessen/psv-register/VM-WA";
-    };
-    psv-register-feld = {
-      url = "github:PSV-Bogenschiessen/psv-register/VM-Feld";
-    };
-    psv-register-indoor = {
-      url = "github:PSV-Bogenschiessen/psv-register/Indoor";
-    };
-    psv-register-halle = {
-      url = "github:PSV-Bogenschiessen/psv-register/VM-Halle";
-    };
-    psv-register-cup = {
-      url = "github:PSV-Bogenschiessen/psv-register/PSV-Cup";
-    };
   };
 
   outputs = inputs@{ self, nixpkgs, home-manager, nixos-hardware, ... }: {
     overlays = {
       addUnstable = (
         final: prev: {
-          unstable = import inputs.unstable { system = final.system; config.allowUnfree = true;};
+          unstable = import inputs.unstable { system = final.stdenv.hostPlatform.system; config.allowUnfree = true;};
         }
       );
-    };
-    nixosConfigurations."Nix-PC" = nixpkgs.lib.nixosSystem rec {
-     system = "x86_64-linux";
-      specialArgs = {
-        vars = {
-          username = "thomas";
-          homedir = "/home/thomas";
-        };
-      };
-      modules = [
-        {
-          disabledModules = [ "services/web-apps/mealie.nix" ];
-          imports = [ "${inputs.unstable}/nixos/modules/services/web-apps/mealie.nix" ];
-        }
-        {nixpkgs.overlays = [self.overlays.addUnstable];}
-        nixos-hardware.nixosModules.common-cpu-intel
-        nixos-hardware.nixosModules.common-pc-ssd
-        ./includes/common
-        ./machines/Nix-PC
-        home-manager.nixosModules.home-manager
-        inputs.psv-register-wa.nixosModules."${system}".psv-registration
-        inputs.psv-register-feld.nixosModules."${system}".psv-registration
-        inputs.psv-register-indoor.nixosModules."${system}".psv-registration
-        inputs.psv-register-halle.nixosModules."${system}".psv-registration
-        inputs.psv-register-cup.nixosModules."${system}".psv-registration
-      ];
     };
     nixosConfigurations.beelink = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -100,23 +59,6 @@
         ./machines/beelink
         home-manager.nixosModules.home-manager
         inputs.impermanence.nixosModules.impermanence
-      ];
-    };
-    nixosConfigurations."Nix-Pi" = nixpkgs.lib.nixosSystem {
-     system = "aarch64-linux";
-      specialArgs = {
-        vars = {
-          username = "thomas";
-          homedir = "/home/thomas";
-        };
-      };
-      modules = [
-        {nixpkgs.overlays = [self.overlays.addUnstable];}
-        nixos-hardware.nixosModules.raspberry-pi-4
-        nixos-hardware.nixosModules.common-pc-ssd
-        ./includes/common
-        ./machines/Nix-Pi/configuration.nix
-        inputs.nixos-generators.nixosModules.all-formats
       ];
     };
     darwinConfigurations."MacBook-Pro-von-Thomas" = inputs.nix-darwin.lib.darwinSystem {

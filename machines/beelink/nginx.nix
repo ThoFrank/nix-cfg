@@ -8,7 +8,6 @@
     recommendedOptimisation = true;
     recommendedBrotliSettings = true;
     recommendedGzipSettings = true;
-    recommendedZstdSettings = true;
     recommendedProxySettings = true;
 
     # Only allow PFS-enabled ciphers with AES256
