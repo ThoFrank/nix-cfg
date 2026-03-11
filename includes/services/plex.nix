@@ -2,7 +2,7 @@
 {
   services.plex = {
     enable = true;
-    package = pkgs.unstable.plex;
+    package = pkgs.plex;
     openFirewall = true;
     };
 }

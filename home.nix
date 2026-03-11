@@ -4,7 +4,7 @@ vars: { config, pkgs, lib, ... }:
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = vars.username;
-  home.homeDirectory = vars.homedir;
+  home.homeDirectory = vars.homeDir;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -182,7 +182,7 @@ vars: { config, pkgs, lib, ... }:
   };
   programs.helix = {
     enable = true;
-    package = pkgs.unstable.helix;
+    # package = pkgs.unstable.helix;
     defaultEditor = true;
     settings = {
       theme = "onedark";

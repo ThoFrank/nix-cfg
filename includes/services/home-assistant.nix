@@ -3,7 +3,7 @@
   imports = [ ];
   services.home-assistant = {
     enable = true;
-    package = pkgs.unstable.home-assistant;
+    package = pkgs.home-assistant;
     config = {
       default_config = {};
       http = {server_port = 8123;};
@@ -41,7 +41,7 @@
   };
   services.zigbee2mqtt = {
     enable = true;
-    package = pkgs.unstable.zigbee2mqtt_2;
+    package = pkgs.zigbee2mqtt_2;
     settings = {
       permit_join = false;
       serial = {

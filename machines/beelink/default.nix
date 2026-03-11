@@ -110,15 +110,8 @@
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users = {
     root.hashedPassword = "";
-    "${vars.username}" = {
-      isNormalUser = true;
-      description = "Thomas Frank";
-      extraGroups = [ "networkmanager" "wheel" ];
-      shell = pkgs.zsh;
-      hashedPassword = "$y$j9T$d5MspDwW25ZV9kZk7PkOt/$qY9FWeapItAEzLrdbMmPR3PG/Do9vUMXWopf9MHPm61";
-    };
   };
-  home-manager.users.${vars.username} = import ../../home.nix vars;
+  # home-manager.users.${vars.username} = import ../../home.nix vars;
   home-manager.useGlobalPkgs = true;
 
   # Install firefox.

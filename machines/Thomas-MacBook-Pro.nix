@@ -1,4 +1,4 @@
-{ config, pkgs, vars, ... }:
+{ config, pkgs, ... }:
 {
   environment.systemPackages =
     [
@@ -33,12 +33,6 @@
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
   system.stateVersion = 4;
-
-  users.users.${vars.username} = {
-    home = vars.homedir;
-    shell = pkgs.zsh;
-  };
-  home-manager.users.${vars.username} = import ../home.nix vars;
 
   home-manager.useGlobalPkgs = true;
   security.pam.services.sudo_local.touchIdAuth = true;
