@@ -185,12 +185,14 @@ vars: { config, pkgs, lib, ... }:
     package = pkgs.unstable.helix;
     defaultEditor = true;
     settings = {
+      editor.soft-wrap.enable = true;
       theme = "onedark";
     };
   };
   programs.alacritty = {
     enable = true;
     settings = {
+      window.option_as_alt = "OnlyLeft";
       font.normal = {family = "ComicShannsMono Nerd Font"; style = "Regular";};
       font.size = 14;
     };
