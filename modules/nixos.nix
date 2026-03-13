@@ -17,7 +17,7 @@
 
   config.flake = {
     nixosConfigurations = lib.flip lib.mapAttrs config.configurations.nixos (
-      name: { module }: lib.nixosSystem { modules = [ module ]; }
+      name: { module }: lib.nixosSystem { modules = [ module ./_meta.nix]; }
     );
 
     checks =

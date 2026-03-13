@@ -4,7 +4,6 @@ vars: { config, pkgs, lib, ... }:
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
   home.username = vars.username;
-  home.homeDirectory = vars.homeDir;
 
   # This value determines the Home Manager release that your
   # configuration is compatible with. This helps avoid breakage
@@ -139,7 +138,6 @@ vars: { config, pkgs, lib, ... }:
 
   programs.vscode = {
     enable = true;
-    package = pkgs.vscode;
     profiles.default = {
       extensions = with pkgs.vscode-extensions; [
         jnoortheen.nix-ide
@@ -186,11 +184,13 @@ vars: { config, pkgs, lib, ... }:
     defaultEditor = true;
     settings = {
       theme = "onedark";
+      editor.soft-wrap.enable = true;
     };
   };
   programs.alacritty = {
     enable = true;
     settings = {
+      window.option_as_alt = "OnlyLeft";
       font.normal = {family = "ComicShannsMono Nerd Font"; style = "Regular";};
       font.size = 14;
     };

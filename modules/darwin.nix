@@ -12,7 +12,7 @@
 
   config.flake = {
     darwinConfigurations = lib.flip lib.mapAttrs config.configurations.darwin (
-      name: { module }: inputs.nix-darwin.lib.darwinSystem { modules = [ module ]; }
+      name: { module }: inputs.nix-darwin.lib.darwinSystem { modules = [ module ./_meta.nix]; }
     );
 
     checks =

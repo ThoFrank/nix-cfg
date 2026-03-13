@@ -1,5 +1,4 @@
-# This is not a flake module, but a nixos / darwin module
-{ lib, config, ... }:
+{ lib, ... }:
 {
   options.meta = {
     username = lib.mkOption {
@@ -10,7 +9,7 @@
     homeDir = lib.mkOption {
       type = lib.types.singleLineStr;
       readOnly = true;
-      default = "/home/${config.username}";
+      # default = "/home/${config.username}";
     };
     gitUserName = lib.mkOption {
       type = lib.types.singleLineStr;

@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, vars, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   imports =
@@ -111,7 +111,7 @@
   users.users = {
     root.hashedPassword = "";
   };
-  # home-manager.users.${vars.username} = import ../../home.nix vars;
+  home-manager.users.${config.meta.username} = import ../../home.nix config.meta;
   home-manager.useGlobalPkgs = true;
 
   # Install firefox.
