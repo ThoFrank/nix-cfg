@@ -38,7 +38,7 @@ vars: { config, pkgs, lib, ... }:
   ++ lib.optionals (pkgs.stdenv.isLinux)
     [
       # linux only
-      pkgs.spotify
+      # pkgs.spotify
       # pkgs.minecraft
       pkgs.libreoffice
     ]
@@ -55,8 +55,10 @@ vars: { config, pkgs, lib, ... }:
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
-      "*" = lib.mkIf (pkgs.stdenv.isDarwin) {
+      "*" = if pkgs.stdenv.isDarwin then {
         identityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+      } else {
+        identityAgent = "~/.1password/agent.sock";
       };
       "github.com" = {
         hostname = "github.com";

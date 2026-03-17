@@ -20,6 +20,10 @@
 
     impermanence.url = "github:nix-community/impermanence";
     determinate.url = "https://flakehub.com/f/DeterminateSystems/determinate/3";
+    nixos-apple-silicon = {
+      url = "github:nix-community/nixos-apple-silicon";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     
   };
 
@@ -59,6 +63,22 @@
         ./machines/beelink
         home-manager.nixosModules.home-manager
         inputs.impermanence.nixosModules.impermanence
+      ];
+    };
+    nixosConfigurations.m2max = nixpkgs.lib.nixosSystem {
+      system = "aarch64-linux";
+      specialArgs = {
+        vars = {
+          username = "thomas";
+          homedir = "/home/thomas";
+        };
+      };
+      modules = [
+        ./includes/common
+        inputs.nixos-apple-silicon.nixosModules.apple-silicon-support
+        {nixpkgs.overlays = [self.overlays.addUnstable];}
+        home-manager.nixosModules.home-manager
+        ./machines/m2max/configuration.nix
       ];
     };
     darwinConfigurations."MacBook-Pro-von-Thomas" = inputs.nix-darwin.lib.darwinSystem {
