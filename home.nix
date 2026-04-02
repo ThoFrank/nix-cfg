@@ -40,6 +40,7 @@ vars: { config, pkgs, lib, ... }:
       pkgs.spotify
       # pkgs.minecraft
       pkgs.libreoffice
+      (pkgs.callPackage ./chipmunk.nix {})
     ]
   ++ lib.optionals (pkgs.stdenv.isDarwin) [
     # darwin only
@@ -54,8 +55,10 @@ vars: { config, pkgs, lib, ... }:
     enable = true;
     enableDefaultConfig = false;
     matchBlocks = {
-      "*" = lib.mkIf (pkgs.stdenv.isDarwin) {
+      "*" = if (pkgs.stdenv.isDarwin) then {
         identityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
+      } else {
+        identityAgent = "~/.1password/agent.sock";
       };
       "github.com" = {
         hostname = "github.com";
@@ -108,7 +111,7 @@ vars: { config, pkgs, lib, ... }:
       };
       gpg = {
         format = "ssh";
-        ssh.program = "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
+        ssh.program = if pkgs.stdenv.isLinux then "/run/current-system/sw/bin/op-ssh-sign" else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
       };
       commit.gpgsign = true;
     };
@@ -127,6 +130,16 @@ vars: { config, pkgs, lib, ... }:
       set -g default-terminal "''${TERM}"
       set -as terminal-overrides ',*:Smulx=\E[4::%p1%dm' # undercurl support
       set -as terminal-overrides ',*:Setulc=\E[58::2::%p1%{65536}%/%d::%p1%{256}%/%{255}%&%d::%p1%{255}%&%d%;m' # underscore colours - needs tmux-3.0
+
+      # keep current path when splitting
+      bind '"' split-window -v -c "#{pane_current_path}"
+      bind % split-window -h -c "#{pane_current_path}"
+
+      # Start windows and panes at 1, not 0
+      set -g base-index 1
+      set -g pane-base-index 1
+      set-window-option -g pane-base-index 1
+      set-option -g renumber-windows on
 
       # fix darwin shell
       # https://github.com/nix-community/home-manager/issues/5952#issuecomment-2409056750
