@@ -184,6 +184,7 @@ vars: { config, pkgs, lib, ... }:
       fi
     '';
   };
+  home.shell.enableZshIntegration = true;
   programs.carapace.enable = true;
   programs.direnv = {
     enable = true;
@@ -201,11 +202,17 @@ vars: { config, pkgs, lib, ... }:
     };
   };
   programs.alacritty = {
-    enable = true;
+    enable = false;
     settings = {
       window.option_as_alt = "OnlyLeft";
       font.normal = {family = "ComicShannsMono Nerd Font"; style = "Regular";};
       font.size = 14;
+    };
+  };
+  programs.ghostty = {
+    enable = true;
+    settings = {
+      font-family = "ComicShannsMono Nerd Font";
     };
   };
   fonts.fontconfig.enable = true;
