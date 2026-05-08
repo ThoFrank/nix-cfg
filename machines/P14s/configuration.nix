@@ -125,6 +125,10 @@
   #  wget
     helix
     git
+    gnome-tweaks
+    can-utils
+    teams-for-linux
+    savvycan
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
