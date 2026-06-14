@@ -21,11 +21,7 @@
       dbhost = "localhost:${builtins.toString config.services.mysql.settings.mysqld.port}";
     };
 
-    extraApps = {
-      inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
-    };
     appstoreEnable = true;
-    extraAppsEnable = true;
 
     settings = {
       trusted_domains = [ "frankcloud.firewall-gateway.com" ];
