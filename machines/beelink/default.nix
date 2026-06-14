@@ -28,9 +28,27 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
   boot.loader.systemd-boot.configurationLimit = 20;
-  boot.initrd.postDeviceCommands = lib.mkAfter ''
-    zfs rollback ssd/root@blank
-  '';
+  boot.initrd.systemd.services."zfs-rollback" = {
+    description = "Rollback root filesystem to a pristine state on boot";
+    wantedBy = [
+      # "zfs.target"
+      "initrd.target"
+    ];
+    after = [
+      "zfs-import-rpool.service"
+    ];
+    before = [
+      "sysroot.mount"
+    ];
+    path = with pkgs; [
+      zfs
+    ];
+    unitConfig.DefaultDependencies = "no";
+    serviceConfig.Type = "oneshot";
+    script = ''
+      zfs rollback ssd/root@blank && echo "  >> >> rollback complete << <<"
+    '';
+  };
 
   networking.hostName = "beelink"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.

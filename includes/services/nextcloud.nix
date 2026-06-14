@@ -24,6 +24,7 @@
     extraApps = {
       inherit (config.services.nextcloud.package.packages.apps) news contacts calendar tasks;
     };
+    appstoreEnable = true;
     extraAppsEnable = true;
 
     settings = {
@@ -41,5 +42,5 @@
   };
 
   users.users.nextcloud.extraGroups = [ "Bilder" ];
-  environment.systemPackages = with pkgs; [ nodejs_20 /*libtensorflow*/ ffmpeg ];
+  environment.systemPackages = with pkgs; [ nodejs /*libtensorflow*/ ffmpeg ];
 }

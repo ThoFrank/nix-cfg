@@ -54,7 +54,7 @@ vars: { config, pkgs, lib, ... }:
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
-    matchBlocks = {
+    settings = {
       "*" = if (pkgs.stdenv.isDarwin) then {
         identityAgent = "\"~/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock\"";
       } else {
@@ -211,7 +211,7 @@ vars: { config, pkgs, lib, ... }:
   };
   programs.ghostty = {
     enable = true;
-    package = if pkgs.stdenv.isDarwin then pkgs.ghostty-bin else pkgs.ghostty;
+    package = lib.mkIf pkgs.stdenv.isDarwin pkgs.ghostty-bin;
     settings = {
       font-family = "ComicShannsMono Nerd Font";
     };

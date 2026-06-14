@@ -3,7 +3,7 @@
   imports = [ ];
   services.home-assistant = {
     enable = true;
-    package = pkgs.home-assistant;
+    package = pkgs.unstable.home-assistant;
     config = {
       default_config = {};
       http = {server_port = 8123;};

@@ -6,6 +6,7 @@
   services.zfs.autoScrub.enable = true;
   services.zfs.trim.enable = true;
   boot.zfs.forceImportAll = true;
+  boot.zfs.forceImportRoot = true;
   boot.zfs.devNodes = "/dev/disk/by-path";
   boot.zfs.extraPools = [ "tank" ];
   
@@ -66,7 +67,7 @@
   
   # auto backup
   services.syncoid = {
-    enable = true;
+    # enable = true;
     interval = "daily";
     commands = {
       pi = {
