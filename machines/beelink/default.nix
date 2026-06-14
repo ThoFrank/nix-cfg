@@ -20,6 +20,7 @@
       ../../includes/services/nextcloud.nix
       ../../includes/services/psv-cloud-sync.nix
       ../../includes/services/samba.nix
+      ../../includes/services/tailscale.nix
       ../../includes/zfs.nix
     ];
 
