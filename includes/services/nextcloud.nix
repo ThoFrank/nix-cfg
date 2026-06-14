@@ -3,7 +3,7 @@
   imports = [ ];
   services.nextcloud = {
     enable = true;
-    package = pkgs.nextcloud32;
+    package = pkgs.nextcloud33;
     hostName = "cloud.franks-im-web.de";
     https = true;
     # home = "/mnt/tank/nextcloud/nextcloud";
