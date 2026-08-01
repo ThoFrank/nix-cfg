@@ -205,7 +205,10 @@ vars: { config, pkgs, lib, ... }:
     enable = false;
     settings = {
       window.option_as_alt = "OnlyLeft";
-      font.normal = {family = "ComicShannsMono Nerd Font"; style = "Regular";};
+      font.normal = {
+        family = "ComicShannsMono Nerd Font";
+        style = "Regular";
+      };
       font.size = 14;
     };
   };
@@ -214,6 +217,11 @@ vars: { config, pkgs, lib, ... }:
     package = lib.mkIf pkgs.stdenv.isDarwin pkgs.ghostty-bin;
     settings = {
       font-family = "ComicShannsMono Nerd Font";
+      macos-option-as-alt = "left";
+      keybind = [
+        "alt+left=unbind"
+        "alt+right=unbind"
+      ];
     };
   };
   fonts.fontconfig.enable = true;
