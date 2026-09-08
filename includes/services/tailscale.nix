@@ -4,6 +4,7 @@
     useRoutingFeatures = "server";
     extraSetFlags = [
       "--advertise-exit-node"
+      "--ssh"
     ];
   };
 }
