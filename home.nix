@@ -1,5 +1,10 @@
-vars: { config, pkgs, lib, ... }:
+vars: { config, pkgs, lib, osConfig ? null, ... }:
 
+let
+  onePasswordEnabled =
+    !pkgs.stdenv.isLinux
+    || (osConfig != null && osConfig ? programs._1password && osConfig.programs._1password.enable);
+in
 {
   # Home Manager needs a bit of information about you and the
   # paths it should manage.
@@ -107,8 +112,10 @@ vars: { config, pkgs, lib, ... }:
       user = {
         name = "Thomas Frank";
         email = "thomas@franks-im-web.de";
+      } // lib.optionalAttrs onePasswordEnabled {
         signingkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMcak+J9h7SIZB/+USe5pZaGkRZWf+eUa7jYDT7f71a3";
       };
+    } // lib.optionalAttrs onePasswordEnabled {
       gpg = {
         format = "ssh";
         ssh.program = if pkgs.stdenv.isLinux then "/run/current-system/sw/bin/op-ssh-sign" else "/Applications/1Password.app/Contents/MacOS/op-ssh-sign";
