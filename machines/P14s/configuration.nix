@@ -13,6 +13,26 @@
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
+  # Hold Space during startup to show the boot menu.
+  boot.loader.timeout = 0;
+
+  # Graphical boot and disk unlock screen.
+  boot.plymouth = {
+    enable = true;
+    theme = "bgrt";
+  };
+  boot.initrd.systemd.enable = true;
+  boot.initrd.verbose = false;
+
+  # Suppress routine messages; press Esc in Plymouth to see boot details.
+  boot.consoleLogLevel = 3;
+  boot.kernelParams = [
+    "quiet"
+    "rd.udev.log_level=3"
+    "udev.log_level=3"
+    "rd.systemd.show_status=auto"
+    "systemd.show_status=auto"
+  ];
 
   boot.initrd.luks.devices."luks-e9c17e99-26c6-4e76-882b-2e516ff6ce7d".device = "/dev/disk/by-uuid/e9c17e99-26c6-4e76-882b-2e516ff6ce7d";
   networking.hostName = "P14s"; # Define your hostname.
