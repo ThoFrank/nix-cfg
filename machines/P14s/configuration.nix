@@ -33,6 +33,7 @@
     "rd.systemd.show_status=auto"
     "systemd.show_status=auto"
   ];
+  boot.kernel.sysctl."vm.swappiness" = 10;
 
   boot.initrd.luks.devices."luks-e9c17e99-26c6-4e76-882b-2e516ff6ce7d".device = "/dev/disk/by-uuid/e9c17e99-26c6-4e76-882b-2e516ff6ce7d";
   networking.hostName = "P14s"; # Define your hostname.
