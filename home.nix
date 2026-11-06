@@ -33,6 +33,7 @@ in
     pkgs.just
     pkgs.btop
     pkgs.sqlitebrowser
+    pkgs.obsidian
     pkgs.gh
     pkgs.nil
     pkgs.devenv
