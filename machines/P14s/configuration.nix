@@ -148,6 +148,7 @@
     helix
     git
     gnome-tweaks
+    wl-clipboard
     can-utils
     teams-for-linux
     savvycan
